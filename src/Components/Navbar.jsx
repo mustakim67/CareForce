@@ -21,7 +21,7 @@ const Navbar = () => {
                     showConfirmButton: false,
                     timer: 1500
                 });
-                navigate('/login');
+                navigate('/');
             })
             .catch(error => {
                 toast.error("Log Out failed!", {
@@ -43,7 +43,11 @@ const Navbar = () => {
                         <ul
                             tabIndex={0}
                             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
-                            <NavLink to={'/'}>Home</NavLink>
+                            <NavLink to={'/'} className={({ isActive }) =>
+                                isActive
+                                    ? 'font-bold text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-red-500'
+                                    : ''
+                            }>Home</NavLink>
 
                             <li>
                                 <NavLink>My Profile</NavLink>
@@ -52,7 +56,11 @@ const Navbar = () => {
                                     <li><Link>Manage My Posts</Link></li>
                                 </ul>
                             </li>
-                            <NavLink to={'all-volunteers'}>All volunteer Need posts</NavLink>
+                            <NavLink className={({ isActive }) =>
+                                isActive
+                                    ? 'font-bold text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-red-500'
+                                    : ''
+                            } to={'all-volunteers'}>All volunteer Need posts</NavLink>
                         </ul>
                     </div>
                     <div className='flex items-center'>
@@ -65,10 +73,17 @@ const Navbar = () => {
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1 lg:flex lg:items-center lg:text-lg font-500 lg:gap-10">
-                        <NavLink to={'/'}>Home</NavLink>
+                        <NavLink
+                            to="/"
+                            className={({ isActive }) =>
+                                isActive
+                                    ? 'font-bold text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-red-500'
+                                    : ''
+                            }>Home</NavLink>
+
                         <li>
                             <details>
-                                <summary>My Profile</summary>
+                                <summary><NavLink >My Profile</NavLink></summary>
                                 <ul className="p-2">
                                     <li className='text-sm'>
                                         <Link>Add Volunteer need Post</Link>
@@ -80,7 +95,11 @@ const Navbar = () => {
                                 </ul>
                             </details>
                         </li>
-                        <NavLink to={'all-volunteers'}>All Volunteer Need posts</NavLink>
+                        <NavLink className={({ isActive }) =>
+                            isActive
+                                ? 'font-bold text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-red-500'
+                                : ''
+                        } to={'all-volunteers'}>All Volunteer Need posts</NavLink>
                     </ul>
                 </div>
                 <div className="navbar-end">
@@ -88,7 +107,7 @@ const Navbar = () => {
                         <Link to={status ? "/login" : "/register"}>
                             <button
                                 onClick={() => setStatus(!status)}
-                                className="bg-blue-700 rounded-xl text-white btn mr-3"
+                                className="bg-linear-to-r from-orange-500 to-red-500 rounded-xl text-white btn mr-3"
                             >
                                 {status ? "Login" : "Register"}
                             </button>
@@ -101,7 +120,7 @@ const Navbar = () => {
                                 <img src={user?.photoURL} title={user?.displayName || "User Name"} />
                             </div>
                         </div>
-                        <button onClick={handleSignOut} className={' text-blue-700 btn ml-2 md:ml-4 rounded-full'}><IoMdLogOut size={30} /></button>
+                        <button onClick={() => { handleSignOut(); setStatus(!status) }} className={' text-blue-700 btn ml-2 md:ml-4 rounded-full'}><IoMdLogOut size={30} /></button>
                     </div>
                     <div className='hidden lg:flex'>
                         <label className="swap swap-rotate ml-1">
