@@ -9,7 +9,7 @@ import { toast } from 'react-toastify';
 import { auth } from './Firebase/Firebase.init';
 
 const Navbar = () => {
-    const { user, status, setStatus, signOutUser } = useContext(AuthContext);
+    const { user, signOutUser } = useContext(AuthContext);
     const navigate = useNavigate()
     const handleSignOut = () => {
         signOutUser(auth)
@@ -45,22 +45,32 @@ const Navbar = () => {
                             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
                             <NavLink to={'/'} className={({ isActive }) =>
                                 isActive
-                                    ? 'font-bold text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-red-500'
+                                    ? 'text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-red-500'
                                     : ''
                             }>Home</NavLink>
 
                             <li>
-                                <NavLink>My Profile</NavLink>
-                                <ul className="p-2">
-                                    <li><Link>Add Volunteer need Post</Link></li>
-                                    <li><Link>Manage My Posts</Link></li>
-                                </ul>
+                                <details>
+                                    <summary>My Profile</summary>
+                                    <ul className="p-2">
+                                        <li className='text-sm'><NavLink to={'/add-volunteer-need-post'} className={({ isActive }) =>
+                                            isActive
+                                                ? 'text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-red-500'
+                                                : ''
+                                        }>Add Volunteer need Post</NavLink></li>
+                                        <li className='text-sm'><NavLink to={'/manage-my-post'} className={({ isActive }) =>
+                                            isActive
+                                                ? 'text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-red-500'
+                                                : ''
+                                        }>Manage My Posts</NavLink></li>
+                                    </ul>
+                                </details>
                             </li>
                             <NavLink className={({ isActive }) =>
                                 isActive
-                                    ? 'font-bold text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-red-500'
+                                    ? ' text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-red-500'
                                     : ''
-                            } to={'all-volunteers'}>All volunteer Need posts</NavLink>
+                            } to={'all-volunteer-need-posts'}>All volunteer Need posts</NavLink>
                         </ul>
                     </div>
                     <div className='flex items-center'>
@@ -77,50 +87,57 @@ const Navbar = () => {
                             to="/"
                             className={({ isActive }) =>
                                 isActive
-                                    ? 'font-bold text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-red-500'
+                                    ? ' text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-red-500'
                                     : ''
                             }>Home</NavLink>
 
-                        <li>
+                        <li className='z-1'>
                             <details>
-                                <summary><NavLink >My Profile</NavLink></summary>
+                                <summary>My Profile</summary>
                                 <ul className="p-2">
-                                    <li className='text-sm'>
-                                        <Link>Add Volunteer need Post</Link>
-                                    </li>
-                                    <li className='text-sm'>
-                                        <Link>Manage My Posts</Link>
-                                    </li>
-
+                                    <li className='text-sm'><NavLink to={'/add-volunteer-need-post'} className={({ isActive }) =>
+                                        isActive
+                                            ? 'text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-red-500'
+                                            : ''
+                                    }>Add Volunteer need Post</NavLink></li>
+                                    <li className='text-sm'><NavLink to={'/manage-my-post'} className={({ isActive }) =>
+                                        isActive
+                                            ? 'text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-red-500'
+                                            : ''
+                                    }>Manage My Posts</NavLink></li>
                                 </ul>
                             </details>
                         </li>
                         <NavLink className={({ isActive }) =>
                             isActive
-                                ? 'font-bold text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-red-500'
+                                ? ' text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-red-500'
                                 : ''
                         } to={'all-volunteers'}>All Volunteer Need posts</NavLink>
                     </ul>
                 </div>
                 <div className="navbar-end">
                     <div className={`${user ? "hidden" : ""}`}>
-                        <Link to={status ? "/login" : "/register"}>
+                        <Link to={user ? " " : '/login'}>
                             <button
-                                onClick={() => setStatus(!status)}
                                 className="bg-linear-to-r from-orange-500 to-red-500 rounded-xl text-white btn mr-3"
                             >
-                                {status ? "Login" : "Register"}
+                                {user ? " " : 'Login'}
                             </button>
                         </Link>
                     </div>
 
                     <div className={`${user ? " " : "hidden"}`}>
-                        <div className="avatar">
-                            <div className="w-12 md:w-18 rounded-full">
-                                <img src={user?.photoURL} title={user?.displayName || "User Name"} />
+                        <div className="dropdown dropdown-hover">
+                            <div tabIndex={0} role="button" className="w-12 md:w-18 rounded-full py-2 mr-4">
+                                <img src={user?.photoURL} alt="User Image" className="rounded-full w-12 h-12 md:w-18 md:h-18 object-cover" />
                             </div>
+                            <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm -translate-x-20">
+                                <li><a className='mx-auto'>{user?.displayName || "User Name"}</a></li>
+                                <li><button onClick={() => {
+                                    handleSignOut();
+                                }} className='btn btn-sm mt-1 rounded-full'>Logout <IoMdLogOut size={18} /></button></li>
+                            </ul>
                         </div>
-                        <button onClick={() => { handleSignOut(); setStatus(!status) }} className={' text-blue-700 btn ml-2 md:ml-4 rounded-full'}><IoMdLogOut size={30} /></button>
                     </div>
                     <div className='hidden lg:flex'>
                         <label className="swap swap-rotate ml-1">

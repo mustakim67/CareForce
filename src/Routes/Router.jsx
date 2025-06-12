@@ -8,6 +8,8 @@ import Register from "../Components/Register";
 import Login from "../Components/Login";
 import AllVolunteer from "../Components/AllVolunteer";
 import Error from '../Components/Error';
+import AddVolunteer from "../LayOuts/AddVolunteer/AddVolunteer";
+import ManageMyPost from "../LayOuts/ManageMyPost/ManageMyPost";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -29,6 +31,14 @@ const router = createBrowserRouter([
       {
         path: 'all-volunteers',
         Component: AllVolunteer
+      },
+      {
+        path:'/add-volunteer-need-post',
+        Component:AddVolunteer
+      },
+      {
+        path:'/manage-my-post',
+        Component:ManageMyPost
       }
 
     ]

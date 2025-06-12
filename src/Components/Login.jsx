@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { useNavigate, Link } from 'react-router';
 import { GoogleAuthProvider } from 'firebase/auth';
 import Swal from 'sweetalert2';
-import {auth} from '../Components/Firebase/Firebase.init'
+import { auth } from '../Components/Firebase/Firebase.init'
 import { AuthContext } from '../Contexts/AuthContext';
 
 const Login = () => {
@@ -12,7 +12,7 @@ const Login = () => {
 
     useEffect(() => {
         if (user) {
-            navigate('/home');
+            navigate('/');
         }
     }, [user, navigate]);
 
@@ -33,7 +33,7 @@ const Login = () => {
                     confirmButtonText: "Okay"
                 });
                 setFailed(false);
-                navigate('/home');
+                navigate('/');
             })
             .catch((error) => {
                 console.log(error);
@@ -96,7 +96,7 @@ const Login = () => {
                         )}
                         <button
                             type="submit"
-                            className="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition"
+                            className="w-full bg-linear-to-r from-orange-500 to-red-500 text-white py-2 rounded-md"
                         >
                             Login
                         </button>
@@ -128,7 +128,7 @@ const Login = () => {
                         </button>
                     </div>
 
-                    <p className="text-center text-sm text-gray-600 mt-5">
+                    <p className="text-center text-sm  mt-5">
                         Don’t have an account?{' '}
                         <Link to="/register" onClick={() => setStatus(!status)} className="text-blue-600 hover:underline">
                             Register
