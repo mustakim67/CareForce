@@ -31,6 +31,7 @@ const router = createBrowserRouter([
       },
       {
         path: 'all-volunteers',
+        loader:() => fetch("http://localhost:3000/posts"),
         Component: AllVolunteer
       },
       {
