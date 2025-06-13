@@ -91,8 +91,8 @@ const MyPost = () => {
             {
                 result.length > 0 ? (
                     <div>
-                        <h1 className="text-2xl font-bold text-center my-15 underline ">My Volunteer Need Posts</h1>
-                        <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
+                        <h1 className="text-2xl font-bold text-center my-15 ">My Volunteer <span className='text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-red-500'>Need Posts</span></h1>
+                        <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 mx-auto">
                             {result.map((mypost) => (
                                 <div key={mypost._id} className="card bg-base-100 shadow-sm">
                                     <figure>
@@ -107,7 +107,7 @@ const MyPost = () => {
                                         <p className="text-sm text-gray-600 mb-2">{mypost.category}</p>
                                         <div className="card-actions justify-end flex-wrap gap-2">
                                             <button
-                                                className="btn btn-sm flex gap-1"
+                                                className="btn btn-sm flex gap-1 bg-gradient-to-r from-orange-500 to-red-500 text-white"
                                                 onClick={() => {
                                                     setUpdate(mypost);
                                                     const parsedDate = new Date(mypost.deadline);
@@ -122,7 +122,7 @@ const MyPost = () => {
                                                 Update <MdEdit size={15} />
                                             </button>
                                             <button
-                                                className="btn btn-sm flex gap-1"
+                                                className="btn btn-sm flex gap-1 bg-gradient-to-r from-orange-500 to-red-500 text-white"
                                                 onClick={() => handleDelete(mypost._id)}
                                             >
                                                 Delete <MdDelete size={15} />
@@ -260,10 +260,10 @@ const MyPost = () => {
 
 
                         <div className='flex flex-col md:flex-row gap-2'>
-                            <button type="submit" className="w-full btn btn-primary mt-4 mx-auto">Update Post Information</button>
+                            <button type="submit" className="w-full btn bg-gradient-to-r from-orange-500 to-red-500 text-white mt-4 mx-auto">Update Post Information</button>
                             <button type='button' onClick={() => {
                                 document.getElementById('my_modal_4').close()
-                            }} className="w-full btn btn-primary md:mt-4 mx-auto">Close</button>
+                            }} className="w-full btn bg-gradient-to-r from-orange-500 to-red-500 text-white md:mt-4 mx-auto">Close</button>
                         </div>
 
                     </form>

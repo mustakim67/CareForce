@@ -11,6 +11,7 @@ import AddVolunteer from "../LayOuts/AddVolunteer/AddVolunteer";
 import ManageMyPost from "../LayOuts/ManageMyPost/ManageMyPost";
 import PrivateRoutes from "./PrivateRoutes";
 import AllVolunteer from "../LayOuts/AllVolunteer/AllVolunteer";
+import VolunteerNeedPostDetails from "../Components/VolunteerNeedPostDetails";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -30,8 +31,8 @@ const router = createBrowserRouter([
         Component: Login
       },
       {
-        path: 'all-volunteers',
-        loader:() => fetch("http://localhost:3000/posts"),
+        path: '/all-volunteers',
+        loader: () => fetch("http://localhost:3000/posts"),
         Component: AllVolunteer
       },
       {
@@ -42,6 +43,11 @@ const router = createBrowserRouter([
         path: '/manage-my-post',
         loader: () => fetch("http://localhost:3000/posts"),
         element: <PrivateRoutes><ManageMyPost /></PrivateRoutes>
+      },
+      {
+        path: '/volunteer-need-post-details/:id',
+        loader: () => fetch("http://localhost:3000/posts"),
+        element: <PrivateRoutes><VolunteerNeedPostDetails></VolunteerNeedPostDetails></PrivateRoutes>
       }
 
     ]

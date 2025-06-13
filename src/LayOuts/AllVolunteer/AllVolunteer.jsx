@@ -1,9 +1,13 @@
-import React from 'react';
+import React, { Suspense } from 'react';
+import AllPosts from '../../Components/AllPosts';
+import Loading from '../../Components/Loading';
 
 const AllVolunteer = () => {
     return (
         <div>
-            <h1>this is All volunteer</h1>
+            <Suspense fallback={<Loading/>}>
+                <AllPosts></AllPosts>
+            </Suspense>
         </div>
     );
 };

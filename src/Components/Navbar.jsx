@@ -70,7 +70,7 @@ const Navbar = () => {
                                 isActive
                                     ? ' text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-red-500'
                                     : ''
-                            } to={'all-volunteer-need-posts'}>All volunteer Need posts</NavLink>
+                            } to={'/all-volunteers'}>All volunteer Need posts</NavLink>
                         </ul>
                     </div>
                     <div className='flex items-center'>
@@ -112,7 +112,7 @@ const Navbar = () => {
                             isActive
                                 ? ' text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-red-500'
                                 : ''
-                        } to={'all-volunteers'}>All Volunteer Need posts</NavLink>
+                        } to={'/all-volunteers'}>All Volunteer Need posts</NavLink>
                     </ul>
                 </div>
                 <div className="navbar-end">
