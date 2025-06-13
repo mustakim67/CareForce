@@ -1,9 +1,10 @@
 import React from 'react';
+import MyPost from '../../Components/MyPost';
 
 const ManageMyPost = () => {
     return (
         <div>
-            <h1>This is manage my post</h1>
+            <MyPost></MyPost>
         </div>
     );
 };

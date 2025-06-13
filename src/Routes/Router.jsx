@@ -6,10 +6,11 @@ import Root from "../LayOuts/Root/Root";
 import Home from "../LayOuts/Home/Home";
 import Register from "../Components/Register";
 import Login from "../Components/Login";
-import AllVolunteer from "../Components/AllVolunteer";
 import Error from '../Components/Error';
 import AddVolunteer from "../LayOuts/AddVolunteer/AddVolunteer";
 import ManageMyPost from "../LayOuts/ManageMyPost/ManageMyPost";
+import PrivateRoutes from "./PrivateRoutes";
+import AllVolunteer from "../LayOuts/AllVolunteer/AllVolunteer";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -33,12 +34,13 @@ const router = createBrowserRouter([
         Component: AllVolunteer
       },
       {
-        path:'/add-volunteer-need-post',
-        Component:AddVolunteer
+        path: '/add-volunteer-need-post',
+        element: <PrivateRoutes><AddVolunteer /></PrivateRoutes>
       },
       {
-        path:'/manage-my-post',
-        Component:ManageMyPost
+        path: '/manage-my-post',
+        loader: () => fetch("http://localhost:3000/posts"),
+        element: <PrivateRoutes><ManageMyPost /></PrivateRoutes>
       }
 
     ]

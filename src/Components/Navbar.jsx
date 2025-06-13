@@ -139,7 +139,7 @@ const Navbar = () => {
                             </ul>
                         </div>
                     </div>
-                    <div className='hidden lg:flex'>
+                    <div className='flex'>
                         <label className="swap swap-rotate ml-1">
                             {/* this hidden checkbox controls the state */}
                             <input type="checkbox" className="theme-controller" value="dark" />
