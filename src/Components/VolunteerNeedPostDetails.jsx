@@ -1,12 +1,16 @@
 import React from 'react';
-import { useParams } from 'react-router';
+import { useLoaderData, useParams } from 'react-router';
 
 const VolunteerNeedPostDetails = () => {
-    const Post= useParams();
-    console.log(Post.id)
+    const{id} = useParams();
+    const Details=useLoaderData();
+    console.log(id)
+
+  console.log(Details.find(data=>data._id===id))
+
     return (
         <div>
-            
+           <h1>ami post details of : {id}</h1> 
         </div>
     );
 };

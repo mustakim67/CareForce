@@ -1,7 +1,7 @@
 import {
   createBrowserRouter,
 } from "react-router";
-import React from 'react';
+import React, { Suspense } from 'react';
 import Root from "../LayOuts/Root/Root";
 import Home from "../LayOuts/Home/Home";
 import Register from "../Components/Register";
@@ -12,6 +12,7 @@ import ManageMyPost from "../LayOuts/ManageMyPost/ManageMyPost";
 import PrivateRoutes from "./PrivateRoutes";
 import AllVolunteer from "../LayOuts/AllVolunteer/AllVolunteer";
 import VolunteerNeedPostDetails from "../Components/VolunteerNeedPostDetails";
+import Loading from "../Components/Loading";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -32,7 +33,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/all-volunteers',
-        loader: () => fetch("http://localhost:3000/posts"),
+        loader: () => fetch("http://localhost:3000/posts"),// loading spinner add a somossa
         Component: AllVolunteer
       },
       {

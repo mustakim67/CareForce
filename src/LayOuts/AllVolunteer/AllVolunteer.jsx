@@ -5,9 +5,7 @@ import Loading from '../../Components/Loading';
 const AllVolunteer = () => {
     return (
         <div>
-            <Suspense fallback={<Loading/>}>
                 <AllPosts></AllPosts>
-            </Suspense>
         </div>
     );
 };

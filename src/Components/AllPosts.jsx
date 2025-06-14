@@ -1,11 +1,16 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useLoaderData } from 'react-router';
 
 const AllPosts = () => {
-    const posts = useLoaderData();
+    const AllPosts = useLoaderData();
+    const [posts, setPosts] = useState(AllPosts);
     const [searchText, setSearchText] = useState('');
 
-    const filteredPosts = searchText ? posts.filter(post => post.postTitle.toLowerCase().includes(searchText.toLowerCase())) : posts;
+    useEffect(() => {
+        fetch(`http://localhost:3000/posts?search=${searchText}`)
+            .then(res => res.json())
+            .then(data => setPosts(data));
+    }, [searchText]);
 
     return (
         <div className="px-4 md:px-[7%] py-8">
@@ -20,13 +25,13 @@ const AllPosts = () => {
                 />
             </div>
 
-            {filteredPosts.length > 0 ? (
+            {posts.length > 0 ? (
                 <>
                     <h1 className="text-lg md:text-2xl font-bold text-center mb-4 md:mb-15">
                         All Volunteer <span className='text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-red-500'>Need Posts</span>
                     </h1>
                     <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
-                        {filteredPosts.map((post) => (
+                        {posts.map((post) => (
                             <div key={post._id} className="card bg-base-100 shadow-md border border-gray-300">
                                 <figure>
                                     <img
