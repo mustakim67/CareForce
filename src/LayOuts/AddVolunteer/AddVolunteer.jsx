@@ -16,7 +16,7 @@ const CreateGroup = () => {
         const form = e.target;
         const formData = new FormData(form);
         const Posts = Object.fromEntries(formData.entries())
-        Posts.deadline = endDate?.toLocaleDateString('en-GB');
+        
 
         // send post data to the database
         axios.post('http://localhost:3000/posts', Posts)

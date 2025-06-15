@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link, useLoaderData } from 'react-router';
 import { MdEdit, MdDelete, MdOutlineManageAccounts } from "react-icons/md";
 import Swal from 'sweetalert2';
@@ -9,15 +9,24 @@ import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 
 const MyPost = () => {
-    const [endDate, setEndDate] = useState(null);
+    const [endDate, setEndDate] = useState(new Date());
     const { user } = useContext(AuthContext);
     const [Update, setUpdate] = useState(null)
+    console.log(Update?.deadline)
     console.log(Update)
-    const groups = useLoaderData();
-    const [data, setData] = useState(groups)
-    const result = data.filter(groups => groups.OrganizationEmail === user.email) || "";
-    console.log(result)
-
+    
+    const posts = useLoaderData();
+    const [data, setData] = useState(posts)
+    const result = data.filter(post => post.OrganizationEmail === user.email) || "";
+ useEffect(()=>{
+if(Update?.deadline){
+const defaultDateString = Update?.deadline;
+    const [day, month, year] = defaultDateString.split('/');
+    const defaultDate = new Date(`${year}-${month}-${day}`);
+    setEndDate(defaultDate);
+}
+ },[Update])
+     
     const handleDelete = (_id) => {
         console.log(_id);
 
@@ -32,12 +41,9 @@ const MyPost = () => {
         }).then((result) => {
             console.log(result.isConfirmed)
             if (result.isConfirmed) {
-                fetch(`http://localhost:3000/posts/${_id}`, {
-                    method: 'DELETE'
-                })
-                    .then(res => res.json())
-                    .then(response => {
-                        if (response.deletedCount) {
+                axios.delete(`http://localhost:3000/posts/${_id}`)
+                    .then(res => {
+                        if (res.data.deletedCount) {
                             Swal.fire({
                                 title: "Deleted!",
                                 text: "Your group has been deleted.",
@@ -48,7 +54,13 @@ const MyPost = () => {
                             setData(remainingGroups);
                         }
                     })
-
+                    .catch(() => {
+                        Swal.fire({
+                            icon: "error",
+                            title: "Oops...",
+                            text: "Something went wrong while deleting!",
+                        });
+                    });
             }
         });
     }
@@ -58,11 +70,11 @@ const MyPost = () => {
         const formData = new FormData(form);
         const updateData = Object.fromEntries(formData.entries());
         updateData.category = form.category.value;
-        updateData.deadline = endDate?.toISOString();
-        //send update data to db
-        axios.post(`http://localhost:3000/posts/${Update._id}`, updateData)
-            .then(response => {
-                if (response.modifiedCount) {
+
+        // send update data to db
+        axios.put(`http://localhost:3000/posts/${Update._id}`, updateData)
+            .then(res => {
+                if (res.data.modifiedCount) {
                     Swal.fire({
                         position: "top-end",
                         icon: "success",
@@ -70,8 +82,9 @@ const MyPost = () => {
                         showConfirmButton: false,
                         timer: 1500
                     });
+
                     const updatedPost = { ...Update, ...updateData };
-                    const updatedData = data.map(Post => Post._id === Update._id ? updatedPost : Post);
+                    const updatedData = data.map(group => group._id === Update._id ? updatedPost : group);
                     setData(updatedData);
                     form.reset();
                     setUpdate(null);
@@ -110,12 +123,6 @@ const MyPost = () => {
                                                 className="btn btn-sm flex gap-1 bg-gradient-to-r from-orange-500 to-red-500 text-white"
                                                 onClick={() => {
                                                     setUpdate(mypost);
-                                                    const parsedDate = new Date(mypost.deadline);
-                                                    if (!isNaN(parsedDate)) {
-                                                        setEndDate(parsedDate);
-                                                    } else {
-                                                        setEndDate(null);
-                                                    }
                                                     document.getElementById('my_modal_4').showModal();
                                                 }}
                                             >
@@ -135,7 +142,7 @@ const MyPost = () => {
                     </div>
                 ) : (
                     <div className="text-center mt-10 text-gray-600 text-lg">
-                        <h1> No groups found !!</h1>
+                        <h1> No Posts found !!</h1>
                     </div>
                 )
             }
@@ -154,7 +161,7 @@ const MyPost = () => {
                                 type="text"
                                 name="postTitle"
                                 className="w-full input input-bordered"
-                                placeholder="Enter group name"
+                                placeholder="Enter Post Title"
                                 required
                             />
                         </div>
@@ -178,7 +185,7 @@ const MyPost = () => {
                                 name="description"
                                 rows="3"
                                 className="w-full textarea textarea-bordered"
-                                placeholder="Describe the group"
+                                placeholder="Describe the post"
                                 required
                             ></textarea>
                         </div>
