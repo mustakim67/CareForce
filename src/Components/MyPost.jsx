@@ -9,7 +9,7 @@ import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 
 const MyPost = () => {
-    const [endDate, setEndDate] = useState(new Date());
+    const [endDate, setEndDate] = useState();
     const { user } = useContext(AuthContext);
     const [Update, setUpdate] = useState(null)
     console.log(Update?.deadline)
@@ -18,17 +18,14 @@ const MyPost = () => {
     const posts = useLoaderData();
     const [data, setData] = useState(posts)
     const result = data.filter(post => post.OrganizationEmail === user.email) || "";
- useEffect(()=>{
-if(Update?.deadline){
-const defaultDateString = Update?.deadline;
-    const [day, month, year] = defaultDateString.split('/');
-    const defaultDate = new Date(`${year}-${month}-${day}`);
-    setEndDate(defaultDate);
-}
- },[Update])
-     
+    useEffect(() => {
+        if (Update?.deadline) {
+            const defaultDate = Update?.deadline;
+            setEndDate(defaultDate);
+        }
+    }, [Update])
+
     const handleDelete = (_id) => {
-        console.log(_id);
 
         Swal.fire({
             title: "Are you sure?",
@@ -39,7 +36,6 @@ const defaultDateString = Update?.deadline;
             cancelButtonColor: "#d33",
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
-            console.log(result.isConfirmed)
             if (result.isConfirmed) {
                 axios.delete(`http://localhost:3000/posts/${_id}`)
                     .then(res => {
@@ -70,15 +66,15 @@ const defaultDateString = Update?.deadline;
         const formData = new FormData(form);
         const updateData = Object.fromEntries(formData.entries());
         updateData.category = form.category.value;
-
+        updateData.deadline = new Date(endDate);
         // send update data to db
-        axios.put(`http://localhost:3000/posts/${Update._id}`, updateData)
+        axios.patch(`http://localhost:3000/posts/${Update._id}`, updateData)
             .then(res => {
-                if (res.data.modifiedCount) {
+                if (res.data.modifiedCount || res.data.matchedCount) {
                     Swal.fire({
                         position: "top-end",
                         icon: "success",
-                        title: "Group Information updated successfully.",
+                        title: "Post Information updated successfully.",
                         showConfirmButton: false,
                         timer: 1500
                     });
@@ -236,8 +232,6 @@ const defaultDateString = Update?.deadline;
                                 selected={endDate}
                                 onChange={(date) => setEndDate(date)}
                                 name="deadline"
-                                minDate={new Date()}
-                                dateFormat="dd/MM/yyyy"
                                 placeholderText="Select deadline"
                                 className="w-[100%] input input-bordered inline-block"
                                 required

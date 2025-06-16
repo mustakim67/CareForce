@@ -7,7 +7,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import axios from 'axios';
 
-const CreateGroup = () => {
+const AddVolunteer = () => {
     const [endDate, setEndDate] = useState(new Date());
     const navigate = useNavigate();
     const { user } = useContext(AuthContext)
@@ -16,6 +16,7 @@ const CreateGroup = () => {
         const form = e.target;
         const formData = new FormData(form);
         const Posts = Object.fromEntries(formData.entries())
+        Posts.deadline = endDate.toISOString();
         
 
         // send post data to the database
@@ -125,8 +126,6 @@ const CreateGroup = () => {
                         selected={endDate}
                         onChange={(date) => setEndDate(date)}
                         name="deadline"
-                        minDate={new Date()}
-                        dateFormat="dd/MM/yyyy"
                         placeholderText="Select deadline"
                         className="w-[100%] input input-bordered block"
                         required
@@ -167,4 +166,4 @@ const CreateGroup = () => {
     );
 };
 
-export default CreateGroup;
+export default AddVolunteer;

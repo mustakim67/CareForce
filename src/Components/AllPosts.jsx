@@ -43,8 +43,12 @@ const AllPosts = () => {
                                 <div className="card-body">
                                     <h2 className="card-title">{post.postTitle}</h2>
                                     <p className="text-sm text-gray-600">{post.category}</p>
-                                    <h1>Deadline: {post.deadline}</h1>
-                                    <h1>Host : {post.OrganizationName}</h1>
+                                    <h1>Deadline: {new Date(post.deadline).toLocaleDateString()}</h1>
+                                    <div className='flex justify-between'>
+                                        <h1>Location : {post.OrganizationName}</h1>
+                                        <h1 className='font-semibold'>Vacancy: {post.numberOfVolunteers}</h1>
+                                    </div>
+                                    
                                     <Link to={`/volunteer-need-post-details/${post._id}`}> <button className='w-full btn bg-gradient-to-r from-orange-500 to-red-500 text-white'>View Details </button></Link>
                                 </div>
                             </div>
