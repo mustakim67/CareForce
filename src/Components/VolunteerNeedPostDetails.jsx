@@ -36,7 +36,7 @@ const VolunteerNeedPostDetails = () => {
                     console.log('Posted successfully.');
 
                     Swal.fire({
-                        title: "Post has been created successfully!",
+                        title: "Post has been Added successfully!",
                         icon: "success",
                         draggable: true
                     });
@@ -93,12 +93,23 @@ const VolunteerNeedPostDetails = () => {
                     <p className="text-md mt-3">
                         {PostDetails?.description || 'No description available.'}
                     </p>
-                    <button onClick={() => {
-                        setUpdate(PostDetails);
-                        document.getElementById('my_modal_4').showModal();
-                    }} className="mt-6 btn bg-gradient-to-r from-orange-500 to-red-500 text-white w-full">
-                        Be a Volunteer
-                    </button>
+                    {
+                        PostDetails?.numberOfVolunteers > 0 ? (
+                            <button
+                                onClick={() => {
+                                    setUpdate(PostDetails);
+                                    document.getElementById('my_modal_4').showModal();
+                                }}
+                                className="mt-6 btn bg-gradient-to-r from-orange-500 to-red-500 text-white w-full"
+                            >
+                                Be a Volunteer
+                            </button>
+                        ) : (
+                            <p className="mt-6 text-red-600 font-semibold text-center">
+                                Volunteer slots are full. You cannot apply.
+                            </p>
+                        )
+                    }
                 </div>
             </div>
             < dialog id="my_modal_4" className="modal">
@@ -120,7 +131,7 @@ const VolunteerNeedPostDetails = () => {
                                 readOnly
                             />
                         </div>
-
+                        <input type="hidden" name="postId" value={Update?._id} />
                         <div>
                             <label className="block mb-1 font-semibold">Thumbnail URL</label>
                             <input

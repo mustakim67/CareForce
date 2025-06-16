@@ -30,7 +30,7 @@ const AllPosts = () => {
                     <h1 className="text-lg md:text-2xl font-bold text-center mb-4 md:mb-15">
                         All Volunteer <span className='text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-red-500'>Need Posts</span>
                     </h1>
-                    <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
+                    <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
                         {posts.map((post) => (
                             <div key={post._id} className="card bg-base-100 shadow-md border border-gray-300">
                                 <figure>
