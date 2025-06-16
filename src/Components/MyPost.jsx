@@ -10,11 +10,9 @@ import "react-datepicker/dist/react-datepicker.css";
 
 const MyPost = () => {
     const [endDate, setEndDate] = useState();
-    const { user } = useContext(AuthContext);
+    const { user,loading,setLoading } = useContext(AuthContext);
     const [Update, setUpdate] = useState(null)
-    console.log(Update?.deadline)
-    console.log(Update)
-    
+
     const posts = useLoaderData();
     const [data, setData] = useState(posts)
     const result = data.filter(post => post.OrganizationEmail === user.email) || "";
@@ -24,6 +22,20 @@ const MyPost = () => {
             setEndDate(defaultDate);
         }
     }, [Update])
+
+const [requestedPosts, setRequestedPosts] = useState([]);
+
+    useEffect(() => {
+        axios.get('http://localhost:3000/requested')
+            .then(res => {
+                setRequestedPosts(res.data.filter(requested=>requested.UserEmail===user.email));
+                setLoading(false);
+            })
+            .catch(err => {
+                console.error('Error loading requested posts:', err);
+                setLoading(false);
+            });
+    }, []);
 
     const handleDelete = (_id) => {
 
@@ -48,6 +60,41 @@ const MyPost = () => {
 
                             const remainingGroups = data.filter(group => group._id !== _id);
                             setData(remainingGroups);
+                        }
+                    })
+                    .catch(() => {
+                        Swal.fire({
+                            icon: "error",
+                            title: "Oops...",
+                            text: "Something went wrong while deleting!",
+                        });
+                    });
+            }
+        });
+    }
+    const handleCancel = (_id) => {
+
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                axios.delete(`http://localhost:3000/requested/${_id}`)
+                    .then(res => {
+                        if (res.data.deletedCount) {
+                            Swal.fire({
+                                title: "Deleted!",
+                                text: "Your request has been cancelled.",
+                                icon: "success"
+                            });
+
+                            const remainingPost = requestedPosts.filter(post => post._id !== _id);
+                            setRequestedPosts(remainingPost);
                         }
                     })
                     .catch(() => {
@@ -97,10 +144,10 @@ const MyPost = () => {
     };
     return (
         <div className="px-4 md:px-[7%] py-8">
-            {
+             <h1 className="text-2xl font-bold text-center my-15 ">My Volunteer <span className='text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-red-500'>Need Posts</span></h1>
+            {   
                 result.length > 0 ? (
                     <div>
-                        <h1 className="text-2xl font-bold text-center my-15 ">My Volunteer <span className='text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-red-500'>Need Posts</span></h1>
                         <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 mx-auto">
                             {result.map((mypost) => (
                                 <div key={mypost._id} className="card bg-base-100 shadow-sm">
@@ -142,7 +189,38 @@ const MyPost = () => {
                     </div>
                 )
             }
-
+            <div>
+                  <h1 className="text-2xl font-bold text-center my-15 ">My Volunteer <span className='text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-red-500'>Request Posts</span></h1>
+                 {requestedPosts.length > 0 ? (
+                                <>
+                                    <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
+                                        {requestedPosts.map((post) => (
+                                            <div key={post._id} className="card bg-base-100 shadow-md border border-gray-300">
+                                                <figure>
+                                                    <img
+                                                        src={post.thumbnail}
+                                                        alt={post.postTitle}
+                                                        className="w-full h-48 object-cover"
+                                                    />
+                                                </figure>
+                                                <div className="card-body">
+                                                    <h2 className="card-title">{post.postTitle}</h2>
+                                                    <p className="text-sm text-gray-600">{post.category}</p>
+                                                    <h1>Deadline: {new Date(post.deadline).toLocaleDateString()}</h1>
+                                                        <h1>Location : {post.OrganizationName}</h1>
+                                                  <button onClick={()=>handleCancel(post._id)} className='w-full btn bg-gradient-to-r from-orange-500 to-red-500 text-white'>Cancel </button>
+                                                </div>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </>
+                
+                            ) : (
+                                <div className="text-center mt-10 text-gray-600 text-lg">
+                                    <h1>No posts Found !</h1>
+                                </div>
+                            )}
+            </div>
             < dialog id="my_modal_4" className="modal">
                 <div className="modal-box w-11/12 max-w-5xl">
                     <h3 className="font-bold text-lg text-center">Update Post Information</h3>

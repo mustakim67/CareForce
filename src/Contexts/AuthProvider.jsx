@@ -21,7 +21,6 @@ const AuthProvider = ({ children }) => {
     }
     //Update Profile
     const updateUserProfile = (UpdateData) => {
-        setLoading(true);
         return updateProfile(auth.currentUser, UpdateData)
     }
     //Sign In user
@@ -50,6 +49,7 @@ const AuthProvider = ({ children }) => {
     const userInfo = {
         user,
         loading,
+        setLoading,
         googleSignIn,
         createUser,
         signInUser,

@@ -23,7 +23,7 @@ const VolunteersNeedNow = () => {
     return (
         <div className='px-4 md:px-[7%] py-8'>
             <div className='border border-orange-500 rounded-xl mt-8'>
-                <div className='text-center text-2xl md:text-3xl font-semibold mt-4 md:mt-8 mb-5   text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-red-500'>
+                <div className='text-center text-2xl md:text-3xl font-semibold  mb-5 mt-2  text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-red-500'>
                     <Typewriter
                         words={[`Volunteer Needs Now`]}
                         loop={Infinity}
@@ -66,7 +66,7 @@ const VolunteersNeedNow = () => {
                     )
                 }
             </div>
-             <Link to={'/all-volunteers'}> <button className='mt-8 btn  max-w-sm mx-auto flex justify-center text-white bg-gradient-to-r from-orange-500 to-red-500 '>View All</button></Link>
+             <Link to={'/all-volunteers'}> <button className='mt-8 btn  max-w-sm mx-auto flex justify-center text-white bg-gradient-to-r from-orange-500 to-red-500 '>See All</button></Link>
         </div>
     );
 };

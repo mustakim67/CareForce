@@ -8,7 +8,7 @@ import axios from 'axios';
 
 const Register = () => {
     const [user, setUser] = useState(false)
-    const { createUser, updateUserProfile, status, setStatus } = useContext(AuthContext);
+    const { createUser, updateUserProfile, status, setStatus, setLoading } = useContext(AuthContext);
     const navigate = useNavigate();
 
     const handleRegisterData = (e) => {
@@ -22,7 +22,7 @@ const Register = () => {
         createUser(email, password)
             .then(result => {
                 const createdUser = result.user;
-
+                setLoading(false)
                 //update the user's profile
                 updateUserProfile({
                     displayName: name,
