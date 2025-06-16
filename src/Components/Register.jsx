@@ -5,6 +5,7 @@ import { AuthContext } from '../Contexts/AuthContext';
 import Swal from 'sweetalert2';
 import { toast } from 'react-toastify';
 import axios from 'axios';
+import { Helmet } from 'react-helmet';
 
 const Register = () => {
     const [user, setUser] = useState(false)
@@ -82,6 +83,9 @@ const Register = () => {
     };
     return (
         <div>
+             <Helmet>
+                <title>Register | CareForce</title>
+            </Helmet>
             <div className="min-h-dvh py-15 flex items-center justify-center px-4">
                 <div className="w-full max-w-md p-6 rounded-xl shadow-lg">
                     <h1 className="text-3xl font-bold text-center mb-3">Register</h1>

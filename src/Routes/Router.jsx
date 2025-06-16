@@ -34,7 +34,7 @@ const router = createBrowserRouter([
       {
         path: '/all-volunteers',
         loader: () => fetch("http://localhost:3000/posts"),// loading spinner add a somossa
-        Component: AllVolunteer
+        element:<Suspense fallback={<span>Loading...............</span>}><AllVolunteer></AllVolunteer></Suspense> 
       },
       {
         path: '/add-volunteer-need-post',

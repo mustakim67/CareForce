@@ -6,7 +6,9 @@ import { NavLink } from 'react-router';
 const Error = () => {
     return (
         <>
-
+            <Helmet>
+                <title>Error | CareForce</title>
+            </Helmet>
             <Navbar></Navbar>
             <div className=' mt-30 place-items-center'>
                 <img className=' mx-auto h-[400px]' src={error} alt="" />

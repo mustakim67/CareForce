@@ -4,6 +4,7 @@ import { GoogleAuthProvider } from 'firebase/auth';
 import Swal from 'sweetalert2';
 import { auth } from '../Components/Firebase/Firebase.init'
 import { AuthContext } from '../Contexts/AuthContext';
+import { Helmet } from 'react-helmet';
 
 const Login = () => {
     const { signInUser, googleSignIn, user, status, setStatus } = useContext(AuthContext);
@@ -59,6 +60,9 @@ const Login = () => {
 
     return (
         <>
+         <Helmet>
+                <title>Login | CareForce</title>
+            </Helmet>
             <div className="min-h-dvh flex flex-col md:flex-row  items-center justify-center bg-[url(/img/mountains.jpg)] px-4">
                 <div className="w-full max-w-md  p-8 rounded-xl shadow-lg">
                     <h1 className="text-3xl font-bold text-center mb-6">Log In</h1>

@@ -6,6 +6,7 @@ import { AuthContext } from '../../Contexts/AuthContext';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import axios from 'axios';
+import { Helmet } from 'react-helmet';
 
 const AddVolunteer = () => {
     const [endDate, setEndDate] = useState(new Date());
@@ -17,7 +18,7 @@ const AddVolunteer = () => {
         const formData = new FormData(form);
         const Posts = Object.fromEntries(formData.entries())
         Posts.deadline = endDate.toISOString();
-        
+
 
         // send post data to the database
         axios.post('http://localhost:3000/posts', Posts)
@@ -46,6 +47,9 @@ const AddVolunteer = () => {
     }
     return (
         <>
+            <Helmet>
+                <title>Add volunteer need post | CareForce</title>
+            </Helmet>
             <div className='gap-2 mx-auto place-items-center mt-10'>
                 <h1 className='text-xl'>Create volunteer need posts in</h1>
                 <div className='flex'>

@@ -4,6 +4,7 @@ import DatePicker from 'react-datepicker';
 import { useLoaderData, useNavigate, useParams } from 'react-router';
 import Swal from 'sweetalert2';
 import { AuthContext } from '../Contexts/AuthContext';
+import { Helmet } from 'react-helmet';
 
 const VolunteerNeedPostDetails = () => {
     const navigate = useNavigate()
@@ -54,6 +55,10 @@ const VolunteerNeedPostDetails = () => {
             });
     };
     return (
+        <>
+         <Helmet>
+                <title>All Posts | CareForce</title>
+            </Helmet>
         <div className="px-4 md:px-[10%] py-10">
             <div className=" gap-8 items-center">
                 <h1 className="text-xl md:3xl font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-red-500 mb-6">
@@ -282,6 +287,8 @@ const VolunteerNeedPostDetails = () => {
                 </div>
             </dialog>
         </div>
+        </>
+        
     );
 };
 
