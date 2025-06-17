@@ -23,15 +23,15 @@ const Home = () => {
             <div>
                 <div className='mx-auto mt-10'>
                     <motion.h1
-                        variants={fadeIn('right', 0.1)}
+                        variants={fadeIn('up', 0.1)}
                         initial='hidden'
                         whileInView={'show'}
                         viewport={{ once: false, amount: 0.7 }}
                         className='text-center font-bold text-xl md:text-4xl px-5'>
-                        We are best in our Services
+                        We are best <span className='bg-gradient-to-r from-orange-500 to-red-500'>in our Services</span> 
                     </motion.h1>
                     <motion.p
-                        variants={fadeIn('left', 0.1)}
+                        variants={fadeIn('down', 0.1)}
                         initial='hidden'
                         whileInView={'show'}
                         viewport={{ once: false, amount: 0.7 }}
@@ -41,7 +41,7 @@ const Home = () => {
                 </div>
                 <div className='grid grid-cols-2 md:grid-cols-4 gap-5 px-[7%] my-15'>
                     <motion.div
-                        variants={fadeIn('right', 0.1)}
+                        variants={fadeIn('up', 0.1)}
                         initial='hidden'
                         whileInView={'show'}
                         viewport={{ once: false, amount: 0.7 }}
@@ -51,7 +51,7 @@ const Home = () => {
                         <p className=' pt-2'>Children Rescued</p>
                     </motion.div>
                     <motion.div
-                        variants={fadeIn('right', 0.1)}
+                        variants={fadeIn('down', 0.1)}
                         initial='hidden'
                         whileInView={'show'}
                         viewport={{ once: false, amount: 0.7 }}
@@ -61,7 +61,7 @@ const Home = () => {
                         <p className=' pt-2'>Total Donations</p>
                     </motion.div>
                     <motion.div
-                        variants={fadeIn('left', 0.1)}
+                        variants={fadeIn('up', 0.1)}
                         initial='hidden'
                         whileInView={'show'}
                         viewport={{ once: false, amount: 0.7 }}
@@ -71,7 +71,7 @@ const Home = () => {
                         <p className=' pt-2'>Event Compelted</p>
                     </motion.div>
                     <motion.div
-                        variants={fadeIn('left', 0.1)}
+                        variants={fadeIn('down', 0.1)}
                         initial='hidden'
                         whileInView={'show'}
                         viewport={{ once: false, amount: 0.7 }}
@@ -84,7 +84,7 @@ const Home = () => {
                 <section className=" py-16 px-[7%]">
                     <div className="max-w-6xl mx-auto text-center">
                         <motion.h2
-                            variants={fadeIn('right', 0.1)}
+                            variants={fadeIn('up', 0.1)}
                             initial='hidden'
                             whileInView={'show'}
                             viewport={{ once: false, amount: 0.7 }}
@@ -92,7 +92,7 @@ const Home = () => {
                             Why Volunteer <span className='text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-red-500'> With Us?</span>
                         </motion.h2>
                         <motion.p
-                            variants={fadeIn('left', 0.1)}
+                            variants={fadeIn('down', 0.1)}
                             initial='hidden'
                             whileInView={'show'}
                             viewport={{ once: false, amount: 0.7 }}
@@ -102,7 +102,7 @@ const Home = () => {
 
                         <div className="flex flex-col md:flex-row justify-center gap-8 mt-10">
                             <motion.div
-                                variants={fadeIn('right', 0.1)}
+                                variants={fadeIn('down', 0.1)}
                                 initial='hidden'
                                 whileInView={'show'}
                                 viewport={{ once: false, amount: 0.7 }}
@@ -122,7 +122,7 @@ const Home = () => {
                             </motion.div>
 
                             <motion.div
-                                variants={fadeIn('left', 0.1)}
+                                variants={fadeIn('down', 0.1)}
                                 initial='hidden'
                                 whileInView={'show'}
                                 viewport={{ once: false, amount: 0.7 }}

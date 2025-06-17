@@ -40,7 +40,7 @@ const AuthProvider = ({ children }) => {
             setLoading(false)
             if (currentUser) {
                 const token = await currentUser.getIdToken(true);
-                console.log("Saved token:", token);
+                // console.log("Saved token:", token);
                 localStorage.setItem("accesstoken", token); // axios er jonno token save korsi
             } else {
                 localStorage.removeItem("accesstoken");

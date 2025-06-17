@@ -3,16 +3,13 @@
 A web application designed to connect volunteers with community initiatives, enabling users to view, request, and participate in meaningful social projects.
 
 ##  Live URL
- [Live Site:](https://care-force-client.vercel.app)
-
+**Live Site:** [(https://careforce-20259.web.app)]
 
 ---
 
 ##  Project Purpose
 
-The purpose of **Care Force** is to simplify and digitize volunteer coordination. Organizations can post volunteer opportunities, while individuals can browse, request, and join events easily.
-
----
+Care Force helps connect volunteers with organizations. Groups can post volunteer needs, and people can easily find, request, and join events.
 
 ##  Key Features
 
@@ -29,19 +26,18 @@ The purpose of **Care Force** is to simplify and digitize volunteer coordination
 
 ##  NPM Packages Used
 
-- [`axios`]
-- [`firebase`]
-- [`framer-motion`]
-- [`react`]
-- [`react-router`]
-- [`react-helmet`]
-- [`react-icons`]
-- [`react-toastify`]
-- [`react-datepicker`]
-- [`react-responsive-carousel`]
-- [`react-countup`]
-- [`react-simple-typewriter`]
-- [`sweetalert2`]
-- [`tailwindcss`]
-- [`daisyui`]
-
+- axios  
+- firebase  
+- framer-motion  
+- react  
+- react-router  
+- react-helmet  
+- react-icons  
+- react-toastify  
+- react-datepicker  
+- react-responsive-carousel  
+- react-countup  
+- react-simple-typewriter  
+- sweetalert2  
+- tailwindcss  
+- daisyui
