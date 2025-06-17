@@ -2,6 +2,11 @@ import React from 'react';
 import Banner from '../../Components/Banner';
 import VolunteersNeedNow from '../../Components/VolunteersNeedNow';
 import { Helmet } from 'react-helmet';
+import CountUp from 'react-countup';
+import { FaHandsHoldingChild } from "react-icons/fa6";
+import { FaRegMoneyBill1 } from "react-icons/fa6";
+import { FaHandHoldingHeart } from "react-icons/fa6";
+import { TiWorld } from "react-icons/ti";
 
 const Home = () => {
     return (
@@ -14,9 +19,37 @@ const Home = () => {
                 <VolunteersNeedNow></VolunteersNeedNow>
             </div>
             <div>
-                <section className=" py-16 px-4 md:px-12">
+                <div className='mx-auto mt-10'>
+                    <h1 className='text-center font-bold text-xl md:text-4xl px-5'>We are best in our Services</h1>
+                    <p className='text-lg px-8 pt-3  text-center max-w-7xl mx-auto'>we connect passionate volunteers with meaningful causes.
+                        From organizing events to supporting communities, we empower people to make a real difference.
+                        Join us to turn compassion into action and bring positive change to the world. </p>
+                </div>
+                <div className='grid grid-cols-2 md:grid-cols-4 gap-5 px-[7%] my-15'>
+                    <div className=' p-7 md:p-12 rounded-xl border-1 border-gray-300 text-center'>
+                        <FaHandsHoldingChild size={40} className='mx-auto' />
+                        <h1 className=' text-3xl font-bold  rounded-xl '><CountUp enableScrollSpy end={400} duration={3} />+</h1>
+                        <p className=' pt-2'>Children Rescued</p>
+                    </div>
+                    <div className=' p-7 md:p-12 rounded-xl border-1 border-gray-300 text-center'>
+                        <FaRegMoneyBill1 size={40} className='mx-auto' />
+                        <h1 className=' text-3xl font-bold  rounded-xl'><CountUp enableScrollSpy end={78000} duration={3} />+</h1>
+                        <p className=' pt-2'>Total Donations</p>
+                    </div>
+                    <div className=' p-7 md:p-12 rounded-xl border-1 border-gray-300 text-center'>
+                        <FaHandHoldingHeart size={40} className='mx-auto' />
+                        <h1 className=' text-3xl font-bold  rounded-xl'><CountUp enableScrollSpy end={700} duration={3} />+</h1>
+                        <p className=' pt-2'>Event Compelted</p>
+                    </div>
+                    <div className='0 p-7 md:p-12 rounded-xl border-1 border-gray-300 text-center'>
+                        <TiWorld size={40} className='mx-auto' />
+                        <h1 className=' text-3xl font-bold  rounded-xl'><CountUp enableScrollSpy end={3000} duration={3} />+</h1>
+                        <p className=' pt-2'>Total Volunteers</p>
+                    </div>
+                </div>
+                <section className=" py-16 px-[7%]">
                     <div className="max-w-6xl mx-auto text-center">
-                        <h2 className="text-3xl md:text-4xl font-bold mb-6">
+                        <h2 className="text-2xl md:text-4xl font-bold mb-6">
                             Why Volunteer <span className='text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-red-500'> With Us?</span>
                         </h2>
                         <p className="text-lg md:text-xl mb-8">
