@@ -11,7 +11,7 @@ const AllPosts = () => {
     const [changed, setChanged] = useState(true);
 
     useEffect(() => {
-        axios(`http://localhost:3000/posts?search=${searchText}`)
+        axios(`https://care-force-server.vercel.app/posts?search=${searchText}`)
             .then(res => setPosts(res.data))
             .catch(err => {
                 console.log(err)

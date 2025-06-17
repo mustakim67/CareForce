@@ -62,7 +62,7 @@ const [requestedPosts, setRequestedPosts] = useState([]);
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                axios.delete(`http://localhost:3000/posts/${_id}`)
+                axios.delete(`https://care-force-server.vercel.app/posts/${_id}`)
                     .then(res => {
                         if (res.data.deletedCount) {
                             Swal.fire({
@@ -97,7 +97,7 @@ const [requestedPosts, setRequestedPosts] = useState([]);
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                axios.delete(`http://localhost:3000/requested/${_id}`)
+                axios.delete(`https://care-force-server.vercel.app/requested/${_id}`)
                     .then(res => {
                         if (res.data.deletedCount) {
                             Swal.fire({
@@ -128,7 +128,7 @@ const [requestedPosts, setRequestedPosts] = useState([]);
         updateData.category = form.category.value;
         updateData.deadline = new Date(endDate);
         // send update data to db
-        axios.patch(`http://localhost:3000/posts/${Update._id}`, updateData)
+        axios.patch(`https://care-force-server.vercel.app/posts/${Update._id}`, updateData)
             .then(res => {
                 if (res.data.modifiedCount || res.data.matchedCount) {
                     Swal.fire({
@@ -157,7 +157,7 @@ const [requestedPosts, setRequestedPosts] = useState([]);
     };
     if (loading) {
     return (
-     <div className='flex justify-center my-80'>
+     <div className='flex justify-center my-80 '>
         <span className="loading loading-spinner loading-xl"></span>
     </div>
     );

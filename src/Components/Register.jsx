@@ -41,7 +41,7 @@ const Register = () => {
                             email,
                             photo
                         }
-                        axios.post('http://localhost:3000/users', DBprofile)
+                        axios.post('https://care-force-server.vercel.app/users', DBprofile)
                             .then(res => {
                                 if (res.data.insertedId) {
                                     Swal.fire({

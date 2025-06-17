@@ -33,7 +33,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/all-volunteers',
-        loader: () => fetch("http://localhost:3000/posts"),
+        loader: () => fetch("https://care-force-server.vercel.app/posts"),
         element: <Suspense fallback={<span>Loading...............</span>}><AllVolunteer></AllVolunteer></Suspense>
       },
       {

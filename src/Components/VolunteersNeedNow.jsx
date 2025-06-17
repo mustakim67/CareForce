@@ -6,10 +6,15 @@ import { Typewriter } from 'react-simple-typewriter'
 const VolunteersNeedNow = () => {
 
     const [posts, setPosts] = useState([]);
+    const [loading, setLoading] = useState(true)
 
     useEffect(() => {
-        axios.get('http://localhost:3000/posts/upcoming')
-            .then(res => setPosts(res.data))
+        axios.get('https://care-force-server.vercel.app/posts/upcoming')
+            .then(res => {
+                setPosts(res.data);
+                setLoading(false);
+            })
+                
             .catch(err => console.error(err));
     }, []);
     const handleType = (count) => {
@@ -19,7 +24,13 @@ const VolunteersNeedNow = () => {
     const handleDone = () => {
         console.log('Done after 5 loops!');
     };
-
+    if (loading) {
+        return (
+            <div className='flex justify-center my-80'>
+                <span className="loading loading-bars loading-xl mx-auto"></span>
+            </div>
+        );
+    }
     return (
         <div className='px-4 md:px-[7%] py-8'>
             <div className='border border-orange-500 rounded-xl mt-8'>
@@ -66,7 +77,7 @@ const VolunteersNeedNow = () => {
                     )
                 }
             </div>
-             <Link to={'/all-volunteers'}> <button className='mt-8 btn  max-w-sm mx-auto flex justify-center text-white bg-gradient-to-r from-orange-500 to-red-500 '>See All</button></Link>
+            <Link to={'/all-volunteers'}> <button className='mt-8 btn  max-w-sm mx-auto flex justify-center text-white bg-gradient-to-r from-orange-500 to-red-500 '>See All</button></Link>
         </div>
     );
 };

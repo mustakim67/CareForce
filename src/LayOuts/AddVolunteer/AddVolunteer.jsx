@@ -21,7 +21,7 @@ const AddVolunteer = () => {
 
 
         // send post data to the database
-        axios.post('http://localhost:3000/posts', Posts)
+        axios.post('https://care-force-server.vercel.app/posts', Posts)
             .then(res => {
                 const data = res.data;
                 if (data.insertedId) {

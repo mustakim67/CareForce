@@ -44,7 +44,7 @@ const VolunteerNeedPostDetails = () => {
         updateData.category = form.category.value;
         updateData.deadline = new Date(endDate);
         // send update data to db
-        axios.post('http://localhost:3000/requested', updateData)
+        axios.post('https://care-force-server.vercel.app/requested', updateData)
             .then(res => {
                 const data = res.data;
                 if (data.insertedId) {
