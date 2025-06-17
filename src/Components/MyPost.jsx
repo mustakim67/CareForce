@@ -15,16 +15,16 @@ const MyPost = () => {
     const [Update, setUpdate] = useState(null)
 
     const axiosSecure = useAxiosSecure();
-
-    useEffect(() => {
-        axios('http://localhost:3000/posts')
-            .then(res => setData(res.data))
-            .catch(() => {
-                console.log('error')
-            });
-    }, []);
-
     const [data, setData] = useState()
+    useEffect(() => {
+          axiosSecure('/viewposts')
+            .then(res => {
+              setData(res.data);
+            })
+            .catch(err => {
+              console.error('Unauthorized or other error:', err);
+            })
+        }, [axiosSecure]);
     const result = data?.filter(post => post.OrganizationEmail === user.email) || "";
     useEffect(() => {
         if (Update?.deadline) {
