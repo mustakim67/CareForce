@@ -11,7 +11,7 @@ import useAxiosSecure from './Hooks/useAxiosSecure';
 
 const MyPost = () => {
     const [endDate, setEndDate] = useState();
-    const { user, loading, setLoading } = useContext(AuthContext);
+    const { user, } = useContext(AuthContext);
     const [Update, setUpdate] = useState(null)
 
     const axiosSecure = useAxiosSecure();
@@ -63,12 +63,12 @@ const [requestedPosts, setRequestedPosts] = useState([]);
                         if (res.data.deletedCount) {
                             Swal.fire({
                                 title: "Deleted!",
-                                text: "Your group has been deleted.",
+                                text: "Your post has been deleted.",
                                 icon: "success"
                             });
 
-                            const remainingGroups = data.filter(group => group._id !== _id);
-                            setData(remainingGroups);
+                            const remainingPosts = data.filter(Post => Post._id !== _id);
+                            setData(remainingPosts);
                         }
                     })
                     .catch(() => {
@@ -136,7 +136,7 @@ const [requestedPosts, setRequestedPosts] = useState([]);
                     });
 
                     const updatedPost = { ...Update, ...updateData };
-                    const updatedData = data.map(group => group._id === Update._id ? updatedPost : group);
+                    const updatedData = data.map(post => post._id === Update._id ? updatedPost :post );
                     setData(updatedData);
                     form.reset();
                     setUpdate(null);

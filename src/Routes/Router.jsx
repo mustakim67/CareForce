@@ -34,7 +34,7 @@ const router = createBrowserRouter([
       {
         path: '/all-volunteers',
         loader: () => fetch("http://localhost:3000/posts"),
-        element:<Suspense fallback={<span>Loading...............</span>}><AllVolunteer></AllVolunteer></Suspense> 
+        element: <Suspense fallback={<span>Loading...............</span>}><AllVolunteer></AllVolunteer></Suspense>
       },
       {
         path: '/add-volunteer-need-post',
@@ -46,7 +46,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/volunteer-need-post-details/:id',
-        element: <PrivateRoutes><VolunteerNeedPostDetails/></PrivateRoutes>
+        element: <PrivateRoutes><VolunteerNeedPostDetails /></PrivateRoutes>
       }
 
     ]

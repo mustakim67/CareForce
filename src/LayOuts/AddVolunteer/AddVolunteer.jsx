@@ -68,7 +68,7 @@ const AddVolunteer = () => {
                         type="text"
                         name="postTitle"
                         className="w-full input input-bordered"
-                        placeholder="Enter group name"
+                        placeholder="Enter Post name"
                         required
                     />
                 </div>
@@ -90,7 +90,7 @@ const AddVolunteer = () => {
                         name="description"
                         rows="3"
                         className="w-full textarea textarea-bordered"
-                        placeholder="Describe the group"
+                        placeholder="Describe the post"
                         required
                     ></textarea>
                 </div>

@@ -84,36 +84,34 @@ const AllPosts = () => {
                         <h1 className="text-lg md:text-2xl font-bold text-center mb-4 md:mb-15">
                             All Volunteer <span className='text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-red-500'>Need Posts</span>
                         </h1>
-                        <div className="overflow-x-auto rounded-box border border-base-content/5 bg-base-100">
+                        <div className="px-[7xl] rounded-box border border-base-content/5 bg-base-100">
                             <table className="table">
                                 <thead>
                                     <tr>
-                                        <th></th>
+                                       
                                         <th>Thumbnail</th>
                                         <th>Title</th>
-                                        <th>Category</th>
+                                        
                                         <th>Deadline</th>
-                                        <th>Location</th>
-                                        <th>Vacancy</th>
+                                        
                                         <th>View Details</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     {posts.length > 0 ? (
-                                        posts.map((post, index) => (
+                                        posts.map((post) => (
                                             <tr key={post._id}>
-                                                <th>{index + 1}</th>
+                                                
                                                 <td>
-                                                    <img src={post.thumbnail} alt={post.postTitle} className="w-16 h-12 rounded" />
+                                                    <img src={post.thumbnail} alt='' className="w-13 h-10 md:w-16 md:h-12 rounded" />
                                                 </td>
-                                                <td>{post.postTitle}</td>
-                                                <td>{post.category}</td>
+                                                <td className='text-sm font-bold'>{post.postTitle}</td>
+                                            
                                                 <td>{new Date(post.deadline).toLocaleDateString()}</td>
-                                                <td>{post.OrganizationName}</td>
-                                                <td>{post.numberOfVolunteers}</td>
+                                        
                                                 <td>
                                                     <Link to={`/volunteer-need-post-details/${post._id}`}>
-                                                        <button className="btn btn-sm bg-gradient-to-r from-orange-500 to-red-500 text-white">View Details</button>
+                                                        <button className="btn btn-sm bg-gradient-to-r from-orange-500 to-red-500 text-white">Details</button>
                                                     </Link>
                                                 </td>
                                             </tr>
