@@ -28,7 +28,7 @@ const Home = () => {
                         whileInView={'show'}
                         viewport={{ once: false, amount: 0.7 }}
                         className='text-center font-bold text-xl md:text-4xl px-5'>
-                        We are best <span className='bg-gradient-to-r from-orange-500 to-red-500'>in our Services</span> 
+                        We are best <span className='text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-red-500'>in our Services</span> 
                     </motion.h1>
                     <motion.p
                         variants={fadeIn('down', 0.1)}
