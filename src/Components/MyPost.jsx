@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { Link, useLoaderData } from 'react-router';
+import { Link } from 'react-router';
 import { MdEdit, MdDelete, MdOutlineManageAccounts } from "react-icons/md";
 import Swal from 'sweetalert2';
 import axios from 'axios';
@@ -7,15 +7,25 @@ import { AuthContext } from '../Contexts/AuthContext';
 import "react-datepicker/dist/react-datepicker.css";
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
+import useAxiosSecure from './Hooks/useAxiosSecure';
 
 const MyPost = () => {
     const [endDate, setEndDate] = useState();
-    const { user,loading,setLoading } = useContext(AuthContext);
+    const { user, loading, setLoading } = useContext(AuthContext);
     const [Update, setUpdate] = useState(null)
 
-    const posts = useLoaderData();
-    const [data, setData] = useState(posts)
-    const result = data.filter(post => post.OrganizationEmail === user.email) || "";
+    const axiosSecure = useAxiosSecure();
+
+    useEffect(() => {
+        axios('http://localhost:3000/posts')
+            .then(res => setData(res.data))
+            .catch(() => {
+                console.log('error')
+            });
+    }, []);
+
+    const [data, setData] = useState()
+    const result = data?.filter(post => post.OrganizationEmail === user.email) || "";
     useEffect(() => {
         if (Update?.deadline) {
             const defaultDate = Update?.deadline;
@@ -25,17 +35,19 @@ const MyPost = () => {
 
 const [requestedPosts, setRequestedPosts] = useState([]);
 
-    useEffect(() => {
-        axios.get('http://localhost:3000/requested')
-            .then(res => {
-                setRequestedPosts(res.data.filter(requested=>requested.UserEmail===user.email));
-                setLoading(false);
-            })
-            .catch(err => {
-                console.error('Error loading requested posts:', err);
-                setLoading(false);
-            });
-    }, []);
+  useEffect(() => {
+  if (!user?.email) return;
+
+  axiosSecure('/requested')
+    .then(res => {
+      const filtered = res.data.filter(requested => requested.UserEmail === user.email);
+      setRequestedPosts(filtered);
+    })
+    .catch(err => {
+      console.error('Unauthorized or other error:', err);
+    })
+    .finally(() => setLoading(false));
+}, [axiosSecure, user?.email]);
 
     const handleDelete = (_id) => {
 
@@ -144,8 +156,8 @@ const [requestedPosts, setRequestedPosts] = useState([]);
     };
     return (
         <div className="px-4 md:px-[7%] py-8">
-             <h1 className="text-2xl font-bold text-center my-15 ">My Volunteer <span className='text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-red-500'>Need Posts</span></h1>
-            {   
+            <h1 className="text-2xl font-bold text-center my-15 ">My Volunteer <span className='text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-red-500'>Need Posts</span></h1>
+            {
                 result.length > 0 ? (
                     <div>
                         <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 mx-auto">
@@ -190,36 +202,36 @@ const [requestedPosts, setRequestedPosts] = useState([]);
                 )
             }
             <div>
-                  <h1 className="text-2xl font-bold text-center my-15 ">My Volunteer <span className='text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-red-500'>Request Posts</span></h1>
-                 {requestedPosts.length > 0 ? (
-                                <>
-                                    <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
-                                        {requestedPosts.map((post) => (
-                                            <div key={post._id} className="card bg-base-100 shadow-md border border-gray-300">
-                                                <figure>
-                                                    <img
-                                                        src={post.thumbnail}
-                                                        alt={post.postTitle}
-                                                        className="w-full h-48 object-cover"
-                                                    />
-                                                </figure>
-                                                <div className="card-body">
-                                                    <h2 className="card-title">{post.postTitle}</h2>
-                                                    <p className="text-sm text-gray-600">{post.category}</p>
-                                                    <h1>Deadline: {new Date(post.deadline).toLocaleDateString()}</h1>
-                                                        <h1>Location : {post.OrganizationName}</h1>
-                                                  <button onClick={()=>handleCancel(post._id)} className='w-full btn bg-gradient-to-r from-orange-500 to-red-500 text-white'>Cancel </button>
-                                                </div>
-                                            </div>
-                                        ))}
+                <h1 className="text-2xl font-bold text-center my-15 ">My Volunteer <span className='text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-red-500'>Request Posts</span></h1>
+                {requestedPosts.length > 0 ? (
+                    <>
+                        <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
+                            {requestedPosts.map((post) => (
+                                <div key={post._id} className="card bg-base-100 shadow-md border border-gray-300">
+                                    <figure>
+                                        <img
+                                            src={post.thumbnail}
+                                            alt={post.postTitle}
+                                            className="w-full h-48 object-cover"
+                                        />
+                                    </figure>
+                                    <div className="card-body">
+                                        <h2 className="card-title">{post.postTitle}</h2>
+                                        <p className="text-sm text-gray-600">{post.category}</p>
+                                        <h1>Deadline: {new Date(post.deadline).toLocaleDateString()}</h1>
+                                        <h1>Location : {post.OrganizationName}</h1>
+                                        <button onClick={() => handleCancel(post._id)} className='w-full btn bg-gradient-to-r from-orange-500 to-red-500 text-white'>Cancel </button>
                                     </div>
-                                </>
-                
-                            ) : (
-                                <div className="text-center mt-10 text-gray-600 text-lg">
-                                    <h1>No posts Found !</h1>
                                 </div>
-                            )}
+                            ))}
+                        </div>
+                    </>
+
+                ) : (
+                    <div className="text-center mt-10 text-gray-600 text-lg">
+                        <h1>No posts Found !</h1>
+                    </div>
+                )}
             </div>
             < dialog id="my_modal_4" className="modal">
                 <div className="modal-box w-11/12 max-w-5xl">

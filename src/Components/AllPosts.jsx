@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link, useLoaderData } from 'react-router';
 import { BsFillGrid3X3GapFill } from "react-icons/bs";
 import { FaTableList } from "react-icons/fa6";
+import axios from 'axios';
 
 const AllPosts = () => {
     const AllPosts = useLoaderData();
@@ -10,9 +11,11 @@ const AllPosts = () => {
     const [changed, setChanged] = useState(true);
 
     useEffect(() => {
-        fetch(`http://localhost:3000/posts?search=${searchText}`)
-            .then(res => res.json())
-            .then(data => setPosts(data));
+        axios(`http://localhost:3000/posts?search=${searchText}`)
+            .then(res => setPosts(res.data))
+            .catch(err => {
+                console.log(err)
+            });
     }, [searchText]);
 
     return (
@@ -34,7 +37,7 @@ const AllPosts = () => {
 
             {
                 changed ? (
-                    posts.length > 0 ? (
+                    posts?.length > 0 ? (
                         <>
                             <h1 className="text-lg md:text-2xl font-bold text-center mb-4 md:mb-15">
                                 All Volunteer <span className='text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-red-500'>Need Posts</span>

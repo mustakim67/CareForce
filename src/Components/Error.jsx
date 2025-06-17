@@ -2,6 +2,7 @@ import React from 'react';
 import error from '../assets/error.jpg'
 import Navbar from '../Components/Navbar'
 import { NavLink } from 'react-router';
+import { Helmet } from 'react-helmet';
 
 const Error = () => {
     return (

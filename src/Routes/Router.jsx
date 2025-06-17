@@ -33,7 +33,6 @@ const router = createBrowserRouter([
       },
       {
         path: '/all-volunteers',
-        loader: () => fetch("http://localhost:3000/posts"),// loading spinner add a somossa
         element:<Suspense fallback={<span>Loading...............</span>}><AllVolunteer></AllVolunteer></Suspense> 
       },
       {
@@ -42,7 +41,6 @@ const router = createBrowserRouter([
       },
       {
         path: '/manage-my-post',
-        loader: () => fetch("http://localhost:3000/posts"),
         element: <PrivateRoutes><ManageMyPost /></PrivateRoutes>
       },
       {

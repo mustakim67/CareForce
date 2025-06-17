@@ -35,9 +35,16 @@ const AuthProvider = ({ children }) => {
     }
     //Hold Current User data
     useEffect(() => {
-        const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
+        const unSubscribe = onAuthStateChanged(auth, async(currentUser) => {
             setUser(currentUser)
             setLoading(false)
+            if (currentUser) {
+                const token = await currentUser.getIdToken(true);
+                console.log("Saved token:", token);
+                localStorage.setItem("accesstoken", token); // axios er jonno token save korsi
+            } else {
+                localStorage.removeItem("accesstoken");
+            }
 
         })
 
