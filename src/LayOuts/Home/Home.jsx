@@ -8,7 +8,7 @@ import { FaRegMoneyBill1 } from "react-icons/fa6";
 import { FaHandHoldingHeart } from "react-icons/fa6";
 import { TiWorld } from "react-icons/ti";
 import { motion } from 'framer-motion';
-import {fadeIn} from '../../Components/variant'
+import { fadeIn } from '../../Components/variant'
 
 const Home = () => {
     return (
@@ -22,20 +22,20 @@ const Home = () => {
             </div>
             <div>
                 <div className='mx-auto mt-10'>
-                    <motion.h1 
-                     variants={fadeIn('right', 0.1)}
+                    <motion.h1
+                        variants={fadeIn('right', 0.1)}
                         initial='hidden'
                         whileInView={'show'}
                         viewport={{ once: false, amount: 0.7 }}
                         className='text-center font-bold text-xl md:text-4xl px-5'>
-                            We are best in our Services
-                            </motion.h1>
-                    <motion.p 
-                     variants={fadeIn('left', 0.1)}
+                        We are best in our Services
+                    </motion.h1>
+                    <motion.p
+                        variants={fadeIn('left', 0.1)}
                         initial='hidden'
                         whileInView={'show'}
                         viewport={{ once: false, amount: 0.7 }}
-                    className='text-lg px-8 pt-3  text-center max-w-7xl mx-auto'>we connect passionate volunteers with meaningful causes.
+                        className='text-lg px-8 pt-3  text-center max-w-7xl mx-auto'>we connect passionate volunteers with meaningful causes.
                         From organizing events to supporting communities, we empower people to make a real difference.
                         Join us to turn compassion into action and bring positive change to the world. </motion.p>
                 </div>
@@ -50,32 +50,32 @@ const Home = () => {
                         <h1 className=' text-3xl font-bold  rounded-xl '><CountUp enableScrollSpy end={400} duration={3} />+</h1>
                         <p className=' pt-2'>Children Rescued</p>
                     </motion.div>
-                    <motion.div 
-                     variants={fadeIn('right', 0.1)}
+                    <motion.div
+                        variants={fadeIn('right', 0.1)}
                         initial='hidden'
                         whileInView={'show'}
                         viewport={{ once: false, amount: 0.7 }}
-                    className=' p-7 md:p-12 rounded-xl border-1 border-gray-300 text-center'>
+                        className=' p-7 md:p-12 rounded-xl border-1 border-gray-300 text-center'>
                         <FaRegMoneyBill1 size={40} className='mx-auto' />
                         <h1 className=' text-3xl font-bold  rounded-xl'><CountUp enableScrollSpy end={78000} duration={3} />+</h1>
                         <p className=' pt-2'>Total Donations</p>
                     </motion.div>
-                    <motion.div 
-                     variants={fadeIn('left', 0.1)}
+                    <motion.div
+                        variants={fadeIn('left', 0.1)}
                         initial='hidden'
                         whileInView={'show'}
                         viewport={{ once: false, amount: 0.7 }}
-                    className=' p-7 md:p-12 rounded-xl border-1 border-gray-300 text-center'>
+                        className=' p-7 md:p-12 rounded-xl border-1 border-gray-300 text-center'>
                         <FaHandHoldingHeart size={40} className='mx-auto' />
                         <h1 className=' text-3xl font-bold  rounded-xl'><CountUp enableScrollSpy end={700} duration={3} />+</h1>
                         <p className=' pt-2'>Event Compelted</p>
                     </motion.div>
-                    <motion.div 
-                     variants={fadeIn('left', 0.1)}
+                    <motion.div
+                        variants={fadeIn('left', 0.1)}
                         initial='hidden'
                         whileInView={'show'}
                         viewport={{ once: false, amount: 0.7 }}
-                    className='0 p-7 md:p-12 rounded-xl border-1 border-gray-300 text-center'>
+                        className='0 p-7 md:p-12 rounded-xl border-1 border-gray-300 text-center'>
                         <TiWorld size={40} className='mx-auto' />
                         <h1 className=' text-3xl font-bold  rounded-xl'><CountUp enableScrollSpy end={3000} duration={3} />+</h1>
                         <p className=' pt-2'>Total Volunteers</p>
@@ -83,28 +83,53 @@ const Home = () => {
                 </div>
                 <section className=" py-16 px-[7%]">
                     <div className="max-w-6xl mx-auto text-center">
-                        <h2 className="text-2xl md:text-4xl font-bold mb-6">
+                        <motion.h2
+                            variants={fadeIn('right', 0.1)}
+                            initial='hidden'
+                            whileInView={'show'}
+                            viewport={{ once: false, amount: 0.7 }}
+                            className="text-2xl md:text-4xl font-bold mb-6">
                             Why Volunteer <span className='text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-red-500'> With Us?</span>
-                        </h2>
-                        <p className="text-lg md:text-xl mb-8">
+                        </motion.h2>
+                        <motion.p
+                            variants={fadeIn('left', 0.1)}
+                            initial='hidden'
+                            whileInView={'show'}
+                            viewport={{ once: false, amount: 0.7 }}
+                            className="text-lg md:text-xl mb-8">
                             Volunteering is a powerful way to give back, build connections, and make a real difference in the lives of others. Whether you're passionate about the environment, education, or community development — we have a place for you.
-                        </p>
+                        </motion.p>
 
                         <div className="flex flex-col md:flex-row justify-center gap-8 mt-10">
-                            <div className="bg-orange-100 p-6 rounded-2xl shadow-md max-w-sm">
+                            <motion.div
+                                variants={fadeIn('right', 0.1)}
+                                initial='hidden'
+                                whileInView={'show'}
+                                viewport={{ once: false, amount: 0.7 }}
+                                className="bg-orange-100 p-6 rounded-2xl shadow-md max-w-sm">
                                 <h3 className="text-xl font-semibold text-orange-700 mb-2">Make an Impact</h3>
                                 <p className='text-gray-500'>Help us create meaningful change in local communities by dedicating your time and effort.</p>
-                            </div>
+                            </motion.div>
 
-                            <div className="bg-blue-100 p-6 rounded-2xl shadow-md max-w-sm">
+                            <motion.div
+                                variants={fadeIn('up', 0.1)}
+                                initial='hidden'
+                                whileInView={'show'}
+                                viewport={{ once: false, amount: 0.7 }}
+                                className="bg-blue-100 p-6 rounded-2xl shadow-md max-w-sm">
                                 <h3 className="text-xl font-semibold text-blue-700 mb-2">Build Skills</h3>
                                 <p className='text-gray-500'>Develop leadership, teamwork, and communication skills while doing something fulfilling.</p>
-                            </div>
+                            </motion.div>
 
-                            <div className="bg-green-100 p-6 rounded-2xl shadow-md max-w-sm">
+                            <motion.div
+                                variants={fadeIn('left', 0.1)}
+                                initial='hidden'
+                                whileInView={'show'}
+                                viewport={{ once: false, amount: 0.7 }}
+                                className="bg-green-100 p-6 rounded-2xl shadow-md max-w-sm">
                                 <h3 className="text-xl font-semibold text-green-700 mb-2">Connect With Others</h3>
                                 <p className='text-gray-500'>Meet like-minded people who share your passion for service and community growth.</p>
-                            </div>
+                            </motion.div>
                         </div>
                     </div>
                 </section>
