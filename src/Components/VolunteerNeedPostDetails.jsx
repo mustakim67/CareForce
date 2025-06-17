@@ -13,9 +13,11 @@ const VolunteerNeedPostDetails = () => {
     const { id } = useParams();
     const [Details,setDetails]=useState();
     const axiosSecure= useAxiosSecure();
+    const [loading,setLoading]=useState(true);
     useEffect(() => {
       axiosSecure('/viewposts')
         .then(res => {
+        setLoading(false)
           setDetails(res.data);
         })
         .catch(err => {
@@ -66,6 +68,13 @@ const VolunteerNeedPostDetails = () => {
                 });
             });
     };
+     if (loading) {
+    return (
+     <div className='flex justify-center my-80'>
+        <span className="loading loading-spinner loading-xl"></span>
+    </div>
+    );
+  }
     return (
         <>
          <Helmet>

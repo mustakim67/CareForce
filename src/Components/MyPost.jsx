@@ -11,14 +11,17 @@ import useAxiosSecure from './Hooks/useAxiosSecure';
 
 const MyPost = () => {
     const [endDate, setEndDate] = useState();
-    const { user, } = useContext(AuthContext);
-    const [Update, setUpdate] = useState(null)
+    const { user, } = useContext(AuthContext);   
+    const [Update, setUpdate] = useState(null);
+    
+    const [loading,setLoading]=useState(true);
 
     const axiosSecure = useAxiosSecure();
     const [data, setData] = useState()
     useEffect(() => {
           axiosSecure('/viewposts')
             .then(res => {
+              setLoading(false);
               setData(res.data);
             })
             .catch(err => {
@@ -39,6 +42,7 @@ const [requestedPosts, setRequestedPosts] = useState([]);
   axiosSecure('/requested')
     .then(res => {
       const filtered = res.data.filter(requested => requested.UserEmail === user.email);
+      setLoading(false);
       setRequestedPosts(filtered);
     })
     .catch(err => {
@@ -151,6 +155,13 @@ const [requestedPosts, setRequestedPosts] = useState([]);
                 });
             });
     };
+    if (loading) {
+    return (
+     <div className='flex justify-center my-80'>
+        <span className="loading loading-spinner loading-xl"></span>
+    </div>
+    );
+  }
     return (
         <div className="px-4 md:px-[7%] py-8">
             <h1 className="text-2xl font-bold text-center my-15 ">My Volunteer <span className='text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-red-500'>Need Posts</span></h1>
