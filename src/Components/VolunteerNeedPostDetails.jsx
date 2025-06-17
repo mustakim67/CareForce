@@ -1,17 +1,29 @@
 import axios from 'axios';
 import React, { useContext, useEffect, useState } from 'react';
 import DatePicker from 'react-datepicker';
-import { useLoaderData, useNavigate, useParams } from 'react-router';
+import { useNavigate, useParams } from 'react-router';
 import Swal from 'sweetalert2';
 import { AuthContext } from '../Contexts/AuthContext';
 import { Helmet } from 'react-helmet';
+import useAxiosSecure from './Hooks/useAxiosSecure';
 
 const VolunteerNeedPostDetails = () => {
     const navigate = useNavigate()
     const { user } = useContext(AuthContext);
     const { id } = useParams();
-    const Details = useLoaderData();
-    const PostDetails = Details.find(data => data._id === id);
+    const [Details,setDetails]=useState();
+    const axiosSecure= useAxiosSecure();
+    useEffect(() => {
+      axiosSecure('/viewposts')
+        .then(res => {
+          setDetails(res.data);
+        })
+        .catch(err => {
+          console.error('Unauthorized or other error:', err);
+        })
+    }, [axiosSecure]);
+    
+    const PostDetails = Details?.find(data => data?._id === id);
     const [endDate, setEndDate] = useState();
     const [Update, setUpdate] = useState(null);
     useEffect(() => {

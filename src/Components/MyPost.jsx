@@ -36,8 +36,6 @@ const MyPost = () => {
 const [requestedPosts, setRequestedPosts] = useState([]);
 
   useEffect(() => {
-  if (!user?.email) return;
-
   axiosSecure('/requested')
     .then(res => {
       const filtered = res.data.filter(requested => requested.UserEmail === user.email);
@@ -46,7 +44,6 @@ const [requestedPosts, setRequestedPosts] = useState([]);
     .catch(err => {
       console.error('Unauthorized or other error:', err);
     })
-    .finally(() => setLoading(false));
 }, [axiosSecure, user?.email]);
 
     const handleDelete = (_id) => {
