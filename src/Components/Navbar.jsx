@@ -76,8 +76,8 @@ const Navbar = () => {
                     <div className='flex items-center'>
                         <img className='max-w-[30%] md:max-w-full' src={logo} alt="" />
                         <div>
-                            <h1 className='text-xl md:text-xl lg:text-4xl font-bold'>Care Force</h1>
-                            <p className='tetx-xs md:text-sm'>Serves Better</p>
+                            <h1 className='text-lg md:text-xl lg:text-4xl font-bold'>CareForce</h1>
+                            <p className='text-xs md:text-sm'>Serves Better</p>
                         </div>
                     </div>
                 </div>
