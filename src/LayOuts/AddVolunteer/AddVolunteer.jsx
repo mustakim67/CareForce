@@ -50,7 +50,8 @@ const AddVolunteer = () => {
             <Helmet>
                 <title>Add volunteer need post | CareForce</title>
             </Helmet>
-            <div className='gap-2 mx-auto place-items-center mt-10'>
+            <div className='min-h-[dvh]'>
+                 <div className='gap-2 mx-auto place-items-center mt-20'>
                 <h1 className='text-xl'>Create volunteer need posts in</h1>
                 <div className='flex'>
                     <img className='max-w-[50px]' src={logo} alt="" />
@@ -162,9 +163,11 @@ const AddVolunteer = () => {
 
 
                 <div className="md:col-span-2">
-                    <button type="submit" className="w-full btn btn-primary mt-4">Add Post</button>
+                    <button type="submit" className="w-full btn bg-gradient-to-r from-orange-500 to-red-500 mt-4 text-white">Add Post</button>
                 </div>
-            </form>
+            </form> 
+            </div>
+          
         </>
 
     );

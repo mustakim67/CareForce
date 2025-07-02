@@ -19,7 +19,7 @@ const Banner = () => {
                 emulateTouch
             >
                 {/* Slide 1 */}
-                <div className="relative w-full md:h-[700px] h-[500px] bg-[url('https://i.ibb.co/Fk2rFyJQ/ray-sangga-kusuma-U2ep-v-QIick-unsplash.jpg')] bg-center bg-cover bg-no-repeat">
+                <div className="relative w-full md:h-[750px] h-[500px] bg-[url('https://i.ibb.co/Fk2rFyJQ/ray-sangga-kusuma-U2ep-v-QIick-unsplash.jpg')] bg-center bg-cover bg-no-repeat">
                     <div className="absolute inset-0 bg-[rgba(0,0,0,0.5)]"></div>
                     <div className="absolute top-1/3 left-1/2 -translate-x-1/2 px-6 text-center text-white max-w-2xl z-10">
                         <motion.h2
@@ -43,7 +43,7 @@ const Banner = () => {
                 </div>
 
                 {/* Slide 2 */}
-                <div className="relative w-full md:h-[700px] h-[500px] bg-[url('https://i.ibb.co/35K4bKQr/charity-poor.png')] bg-center bg-cover bg-no-repeat">
+                <div className="relative w-full md:h-[750px] h-[500px] bg-[url('https://i.ibb.co/35K4bKQr/charity-poor.png')] bg-center bg-cover bg-no-repeat">
                     <div className="absolute inset-0 bg-[rgba(0,0,0,0.5)]"></div>
                     <div className="absolute top-1/3 left-1/2 -translate-x-1/2 px-6 text-center text-white max-w-2xl z-10">
                         <motion.h2
@@ -66,7 +66,7 @@ const Banner = () => {
                 </div>
 
                 {/* Slide 3 */}
-                <div className="relative w-full md:h-[700px] h-[500px] bg-[url('https://i.ibb.co/Ps36rnzK/ochimax-studio-9l-YZIIr8-Cug-unsplash.jpg')] bg-center bg-cover bg-no-repeat">
+                <div className="relative w-full md:h-[750px] h-[500px] bg-[url('https://i.ibb.co/Ps36rnzK/ochimax-studio-9l-YZIIr8-Cug-unsplash.jpg')] bg-center bg-cover bg-no-repeat">
                     <div className="absolute inset-0 bg-[rgba(0,0,0,0.5)]"></div>
                     <div className="absolute top-1/3 left-1/2 -translate-x-1/2 px-6 text-center text-white max-w-2xl z-10">
                         <motion.h2

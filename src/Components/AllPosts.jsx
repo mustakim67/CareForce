@@ -9,39 +9,56 @@ const AllPosts = () => {
     const [posts, setPosts] = useState(AllPosts);
     const [searchText, setSearchText] = useState('');
     const [changed, setChanged] = useState(true);
+    const [sortOrder, setSortOrder] = useState(''); //for sort
 
     useEffect(() => {
-        axios(`https://care-force-server.vercel.app/posts?search=${searchText}`)
+        axios(`https://care-force-server.vercel.app/posts?search=${searchText}&sort=${sortOrder}`)
             .then(res => setPosts(res.data))
             .catch(err => {
                 console.log(err)
             });
-    }, [searchText]);
+    }, [searchText, sortOrder]);
 
     return (
-        <div className="px-4 md:px-[7%] py-8">
-
-            <div className="flex justify-between items-center mb-12 py-4 px-8 shadow-xl">
+        <>
+            <div className="flex justify-between items-center mb-12 py-4 px-[7%] flex-wrap gap-4">
                 <input
                     type="text"
                     placeholder="Search posts..."
                     value={searchText}
                     onChange={(e) => setSearchText(e.target.value)}
-                    className="w-full max-w-xl px-5 py-3 rounded-full border border-gray-500 shadow-md"
+                    className="w-full md:max-w-xl px-5 py-3 rounded-full border border-gray-500 shadow-md"
                 />
-                <div className='flex gap-5 ml-2'>
-                    <BsFillGrid3X3GapFill size={30} onClick={() => setChanged(true)} className='cursor-pointer ' />
+
+                <div className="flex items-center gap-6">
+                    {/* Sort Order Dropdown */}
+                    <select
+                        value={sortOrder}
+                        onChange={(e) => setSortOrder(e.target.value)}
+                        className="px-4 py-2 border border-gray-400 rounded-md text-sm"
+                    >
+                        <option className='text-black' value="">Sort By</option>
+                        <option className='text-black' value="newest">Newest</option>
+                        <option className='text-black' value="oldest">Oldest</option>
+                    </select>
+
+                    {/* Layout Buttons */}
+                    <BsFillGrid3X3GapFill size={30} onClick={() => setChanged(true)} className='cursor-pointer' />
                     <FaTableList size={30} onClick={() => setChanged(false)} className='cursor-pointer' />
                 </div>
             </div>
 
-            {
-                changed ? (
-                    posts?.length > 0 ? (
-                        <>
-                            <h1 className="text-lg md:text-2xl font-bold text-center mb-4 md:mb-15">
-                                All Volunteer <span className='text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-red-500'>Need Posts</span>
-                            </h1>
+
+
+            <div className="px-4 md:px-[7%] py-8">
+
+                {
+                    changed ? (
+                        posts?.length > 0 ? (
+                            <>
+                                <h1 className="text-lg md:text-2xl font-bold text-center mb-4 md:mb-15">
+                                    All Volunteer <span className='text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-red-500'>Need Posts</span>
+                                </h1>
 
                             <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
                                 {
@@ -132,7 +149,9 @@ const AllPosts = () => {
                 )
             }
 
-        </div>
+            </div>
+        </>
+
     );
 };
 

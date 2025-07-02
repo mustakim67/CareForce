@@ -10,9 +10,9 @@ const Root = () => {
         <>
             <Navbar></Navbar>
 
-            <div>
+            <div className='mt-28'>
                 {navigation.state === 'loading' ? (
-                    <div className='flex justify-center my-80'>
+                    <div className='flex justify-center mt-60 mb-200'>
                         <span className="loading loading-bars loading-xl mx-auto"></span>
                     </div>
                 ) : (<Outlet />)}

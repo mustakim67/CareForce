@@ -34,7 +34,7 @@ const Navbar = () => {
     }
     return (
         <div>
-            <div className="navbar bg-base-100 shadow-md px-[4%] md:px-[7%]">
+            <div className="navbar bg-base-100 shadow-md px-[4%]  md:px-[7%] fixed top-0 z-50">
                 <div className="navbar-start">
                     <div className="dropdown">
                         <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -49,45 +49,77 @@ const Navbar = () => {
                                     : ''
                             }>Home</NavLink>
 
-                            <li>
-                                <details>
-                                    <summary>My Profile</summary>
-                                    <ul className="p-2">
-                                        <li className='text-sm'><NavLink to={'/add-volunteer-need-post'} className={({ isActive }) =>
-                                            isActive
-                                                ? 'text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-red-500'
-                                                : ''
-                                        }>Add Volunteer need Post</NavLink></li>
-                                        <li className='text-sm'><NavLink to={'/manage-my-post'} className={({ isActive }) =>
-                                            isActive
-                                                ? 'text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-red-500'
-                                                : ''
-                                        }>Manage My Posts</NavLink></li>
-                                    </ul>
-                                </details>
-                            </li>
-                            <NavLink className={({ isActive }) =>
-                                isActive
-                                    ? ' text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-red-500'
-                                    : ''
-                            } to={'/all-volunteers'}>All volunteer Need posts</NavLink>
+                            {user ? (
+                                <>
+                                    <li className='z-1'>
+                                        <details>
+                                            <summary>My Profile</summary>
+                                            <ul className="p-2">
+                                                <li className='text-sm'>
+                                                    <NavLink
+                                                        to="/add-volunteer-need-post"
+                                                        className={({ isActive }) =>
+                                                            isActive
+                                                                ? 'text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-red-500'
+                                                                : ''
+                                                        }
+                                                    >
+                                                        Add Volunteer Need Post
+                                                    </NavLink>
+                                                </li>
+                                                <li className='text-sm'>
+                                                    <NavLink
+                                                        to="/manage-my-post"
+                                                        className={({ isActive }) =>
+                                                            isActive
+                                                                ? 'text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-red-500'
+                                                                : ''
+                                                        }
+                                                    >
+                                                        Manage My Posts
+                                                    </NavLink>
+                                                </li>
+                                            </ul>
+                                        </details>
+                                    </li>
+
+                                    <li>
+                                        <NavLink
+                                            to="/all-volunteers"
+                                            className={({ isActive }) =>
+                                                isActive
+                                                    ? 'text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-red-500'
+                                                    : ''
+                                            }
+                                        >
+                                            All Volunteer Need Posts
+                                        </NavLink>
+                                    </li>
+                                </>
+                            ) : null}
+
                             <NavLink to={'/about'} className={({ isActive }) =>
                                 isActive
                                     ? 'text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-red-500'
                                     : ''
-                            }>About</NavLink>
+                            }>About Us</NavLink>
+                            <NavLink to={'/contact'} className={({ isActive }) =>
+                                isActive
+                                    ? 'text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-red-500'
+                                    : ''
+                            }>Contact</NavLink>
                         </ul>
                     </div>
                     <div className='flex items-center'>
                         <img className='max-w-[30%] md:max-w-full' src={logo} alt="" />
                         <div>
-                            <h1 className='text-lg md:text-xl lg:text-4xl font-bold'>CareForce</h1>
+                            <h1 className='text-lg md:text-xl lg:text-3xl font-bold'>CareForce</h1>
                             <p className='text-xs md:text-sm'>Serves Better</p>
                         </div>
                     </div>
                 </div>
                 <div className="navbar-center hidden lg:flex">
-                    <ul className="menu menu-horizontal px-1 lg:flex lg:items-center lg:text-lg font-500 lg:gap-10">
+                    <ul className="menu menu-horizontal px-1 lg:flex lg:items-center lg:text-lg font-500 lg:gap-5">
                         <NavLink
                             to="/"
                             className={({ isActive }) =>
@@ -95,34 +127,66 @@ const Navbar = () => {
                                     ? ' text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-red-500'
                                     : ''
                             }>Home</NavLink>
+                        {user ? (
+                            <>
+                                <li className='z-1'>
+                                    <details>
+                                        <summary>My Profile</summary>
+                                        <ul className="p-2">
+                                            <li className='text-sm'>
+                                                <NavLink
+                                                    to="/add-volunteer-need-post"
+                                                    className={({ isActive }) =>
+                                                        isActive
+                                                            ? 'text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-red-500'
+                                                            : ''
+                                                    }
+                                                >
+                                                    Add Volunteer Need Post
+                                                </NavLink>
+                                            </li>
+                                            <li className='text-sm'>
+                                                <NavLink
+                                                    to="/manage-my-post"
+                                                    className={({ isActive }) =>
+                                                        isActive
+                                                            ? 'text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-red-500'
+                                                            : ''
+                                                    }
+                                                >
+                                                    Manage My Posts
+                                                </NavLink>
+                                            </li>
+                                        </ul>
+                                    </details>
+                                </li>
 
-                        <li className='z-1'>
-                            <details>
-                                <summary>My Profile</summary>
-                                <ul className="p-2">
-                                    <li className='text-sm'><NavLink to={'/add-volunteer-need-post'} className={({ isActive }) =>
-                                        isActive
-                                            ? 'text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-red-500'
-                                            : ''
-                                    }>Add Volunteer need Post</NavLink></li>
-                                    <li className='text-sm'><NavLink to={'/manage-my-post'} className={({ isActive }) =>
-                                        isActive
-                                            ? 'text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-red-500'
-                                            : ''
-                                    }>Manage My Posts</NavLink></li>
-                                </ul>
-                            </details>
-                        </li>
-                        <NavLink className={({ isActive }) =>
-                            isActive
-                                ? ' text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-red-500'
-                                : ''
-                        } to={'/all-volunteers'}>All Volunteer Need posts</NavLink>
+                                <li>
+                                    <NavLink
+                                        to="/all-volunteers"
+                                        className={({ isActive }) =>
+                                            isActive
+                                                ? 'text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-red-500'
+                                                : ''
+                                        }
+                                    >
+                                        All Volunteer Need Posts
+                                    </NavLink>
+                                </li>
+                            </>
+                        ) : null}
+
+
                         <NavLink to={'/about'} className={({ isActive }) =>
                             isActive
                                 ? 'text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-red-500'
                                 : ''
-                        }>About</NavLink>
+                        }>About Us</NavLink>
+                        <NavLink to={'/contact'} className={({ isActive }) =>
+                            isActive
+                                ? 'text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-red-500'
+                                : ''
+                        }>Contact</NavLink>
                     </ul>
                 </div>
                 <div className="navbar-end">

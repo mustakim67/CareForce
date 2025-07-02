@@ -17,42 +17,25 @@ const VolunteersNeedNow = () => {
                 
             .catch(err => console.error(err));
     }, []);
-    const handleType = (count) => {
-        console.log(count);
-    };
-
-    const handleDone = () => {
-        console.log('Done after 5 loops!');
-    };
     if (loading) {
         return (
-            <div className='flex justify-center my-80'>
+            <div className='flex justify-center mt-60 mb-200'>
                 <span className="loading loading-bars loading-xl mx-auto"></span>
             </div>
         );
     }
     return (
         <div className='px-4 md:px-[7%] py-8'>
-            <div className='border border-orange-500 rounded-xl mt-8'>
-                <div className='text-center text-2xl md:text-3xl font-semibold  mb-5 md:mt-2 mt-1  text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-red-500'>
-                    <Typewriter
-                        words={[`Volunteer Needs Now`]}
-                        loop={Infinity}
-                        cursor
-                        cursorStyle="_"
-                        typeSpeed={70}
-                        deleteSpeed={50}
-                        delaySpeed={1000}
-                        onLoopDone={handleDone}
-                        onType={handleType}
-                    />
+            <div className='mt-14'>
+                <div className='text-center text-2xl md:text-3xl font-semibold  mb-5 md:mt-2 mt-1  '>
+                    <h1>Volunteer <span className='text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-red-500'>Needs Now</span></h1>
                 </div>
             </div>
 
             <div className='mt-7 md:mt-15'>
                 {
                     posts.length > 0 ? (
-                        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                             {posts.map(post => (
                                 <div key={post._id} className="card bg-base-100 shadow-md">
                                     <figure>

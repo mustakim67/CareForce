@@ -14,6 +14,7 @@ import AllVolunteer from "../LayOuts/AllVolunteer/AllVolunteer";
 import VolunteerNeedPostDetails from "../Components/VolunteerNeedPostDetails";
 import Loading from "../Components/Loading";
 import About from "../Components/About";
+import Contact from "../Components/Contact";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -35,7 +36,7 @@ const router = createBrowserRouter([
       {
         path: '/all-volunteers',
         loader: () => fetch("https://care-force-server.vercel.app/posts"),
-        element: <Suspense fallback={<span>Loading...............</span>}><AllVolunteer></AllVolunteer></Suspense>
+        element:<PrivateRoutes><AllVolunteer></AllVolunteer></PrivateRoutes>
       },
       {
         path: '/add-volunteer-need-post',
@@ -52,6 +53,10 @@ const router = createBrowserRouter([
       {
         path: '/about',
         Component:About
+      },
+      {
+        path: '/contact',
+        Component:Contact
       }
 
     ]
