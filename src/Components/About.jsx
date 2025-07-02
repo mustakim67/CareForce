@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 
 const About = () => {
     return (
-        <section className="px-[10%] py-16 space-y-16">
+        <section className="px-[7%] py-16 space-y-16">
 
             {/* About Us */}
             <motion.div
@@ -12,7 +12,7 @@ const About = () => {
                 transition={{ duration: 0.5 }}
                 className="space-y-6"
             >
-                <h1 className="text-4xl font-bold text-white py-2 mb-15 text-center bg-gradient-to-r from-orange-500 to-red-500">
+                <h1 className="text-3xl font-semibold text-white py-2 mb-15 text-center bg-gradient-to-r from-orange-500 to-red-500">
                     About Us
                 </h1>
                 <p className="text-lg leading-relaxed">

@@ -31,15 +31,14 @@ const AllPosts = () => {
                 />
 
                 <div className="flex items-center gap-6">
-                    {/* Sort Order Dropdown */}
+                    {/* sorting menu*/}
                     <select
                         value={sortOrder}
                         onChange={(e) => setSortOrder(e.target.value)}
-                        className="px-4 py-2 border border-gray-400 rounded-md text-sm"
-                    >
-                        <option className='text-black' value="">Sort By</option>
-                        <option className='text-black' value="newest">Newest</option>
-                        <option className='text-black' value="oldest">Oldest</option>
+                        className="px-4 py-2 border border-gray-400 rounded-md text-sm bg-white dark:bg-gray-800 dark:text-white">
+                        <option value="">Sort By Vacancy</option>
+                        <option value="Highest">Highest</option>
+                        <option value="Lowest">Lowest</option>
                     </select>
 
                     {/* Layout Buttons */}
@@ -47,6 +46,7 @@ const AllPosts = () => {
                     <FaTableList size={30} onClick={() => setChanged(false)} className='cursor-pointer' />
                 </div>
             </div>
+
 
 
 
@@ -60,25 +60,25 @@ const AllPosts = () => {
                                     All Volunteer <span className='text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-red-500'>Need Posts</span>
                                 </h1>
 
-                            <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
-                                {
-                                    posts.map((post) => (
-                                        <div key={post._id} className="card bg-base-100 shadow-md border border-gray-300">
-                                            <figure>
-                                                <img
-                                                    src={post.thumbnail}
-                                                    alt={post.postTitle}
-                                                    className="w-full h-48 object-cover"
-                                                />
-                                            </figure>
-                                            <div className="card-body">
-                                                <h2 className="card-title">{post.postTitle}</h2>
-                                                <p className="text-sm text-gray-600">{post.category}</p>
-                                                <h1>Deadline: {new Date(post.deadline).toLocaleDateString()}</h1>
-                                                <div className='flex justify-between'>
-                                                    <h1>Location : {post.OrganizationName}</h1>
-                                                    <h1 className='font-semibold'>Vacancy: {post.numberOfVolunteers}</h1>
-                                                </div>
+                                <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
+                                    {
+                                        posts.map((post) => (
+                                            <div key={post._id} className="card bg-base-100 shadow-md border border-gray-300 hover:-translate-y-1 hover:shadow-orange-500/20 transition">
+                                                <figure>
+                                                    <img
+                                                        src={post.thumbnail}
+                                                        alt={post.postTitle}
+                                                        className="w-full h-48 object-cover"
+                                                    />
+                                                </figure>
+                                                <div className="card-body">
+                                                    <h2 className="card-title">{post.postTitle}</h2>
+                                                    <p className="text-sm">{post.category}</p>
+                                                    <h1>Deadline: {new Date(post.deadline).toLocaleDateString()}</h1>
+                                                    <div className='flex justify-between'>
+                                                        <h1>Location : {post.OrganizationName}</h1>
+                                                        <h1 className='font-semibold'>Vacancy: {post.numberOfVolunteers}</h1>
+                                                    </div>
 
                                                 <Link to={`/volunteer-need-post-details/${post._id}`}>
                                                     <button className='w-full btn bg-gradient-to-r from-orange-500 to-red-500 text-white'>
@@ -146,8 +146,8 @@ const AllPosts = () => {
                     </>
 
 
-                )
-            }
+                    )
+                }
 
             </div>
         </>

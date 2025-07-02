@@ -37,7 +37,7 @@ const VolunteersNeedNow = () => {
                     posts.length > 0 ? (
                         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                             {posts.map(post => (
-                                <div key={post._id} className="card bg-base-100 shadow-md">
+                                <div key={post._id} className="card bg-base-100 shadow-md hover:-translate-y-1 hover:shadow-orange-500/20 transition">
                                     <figure>
                                         <img src={post.thumbnail} alt={post.postTitle} className="w-full h-44 object-cover" />
                                     </figure>

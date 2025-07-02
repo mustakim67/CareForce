@@ -170,7 +170,7 @@ const [requestedPosts, setRequestedPosts] = useState([]);
                     <div>
                         <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 mx-auto">
                             {result.map((mypost) => (
-                                <div key={mypost._id} className="card bg-base-100 shadow-sm">
+                                <div key={mypost._id} className="card bg-base-100 shadow-sm hover:-translate-y-1 hover:shadow-orange-500/20 transition">
                                     <figure>
                                         <img
                                             src={mypost.thumbnail}
@@ -215,7 +215,7 @@ const [requestedPosts, setRequestedPosts] = useState([]);
                     <>
                         <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
                             {requestedPosts.map((post) => (
-                                <div key={post._id} className="card bg-base-100 shadow-md border border-gray-300">
+                                <div key={post._id} className="card bg-base-100 shadow-md border border-gray-300 hover:-translate-y-1 hover:shadow-orange-500/20 transition">
                                     <figure>
                                         <img
                                             src={post.thumbnail}

@@ -9,8 +9,27 @@ import { FaHandHoldingHeart } from "react-icons/fa6";
 import { TiWorld } from "react-icons/ti";
 import { motion } from 'framer-motion';
 import { fadeIn } from '../../Components/variant'
+import { FaSearch, FaHandsHelping, FaClipboardList } from 'react-icons/fa';
 
 const Home = () => {
+    const steps = [
+        {
+            icon: <FaSearch className="text-3xl text-orange-500" />,
+            title: 'Explore Opportunities',
+            description: 'Browse a variety of ongoing or upcoming volunteer events in your local area or community.',
+        },
+        {
+            icon: <FaClipboardList className="text-3xl text-orange-500" />,
+            title: 'Request to Join',
+            description: 'With a single click, express your interest to join any project that resonates with you.',
+        },
+        {
+            icon: <FaHandsHelping className="text-3xl text-orange-500" />,
+            title: 'Make a Difference',
+            description: 'Contribute your time, skills, and compassion to real-world projects and bring positive change.',
+        },
+    ];
+
     return (
         <div>
             <Helmet>
@@ -28,7 +47,7 @@ const Home = () => {
                         whileInView={'show'}
                         viewport={{ once: false, amount: 0.7 }}
                         className='text-center font-bold text-xl md:text-4xl px-5'>
-                        We are best <span className='text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-red-500'>in our Services</span> 
+                        We are best <span className='text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-red-500'>in our Services</span>
                     </motion.h1>
                     <motion.p
                         variants={fadeIn('down', 0.1)}
@@ -81,6 +100,37 @@ const Home = () => {
                         <p className=' pt-2'>Total Volunteers</p>
                     </motion.div>
                 </div>
+                <section className="px-[7%] py-16">
+                    <motion.h2
+                        variants={fadeIn('up', 0.1)}
+                        initial="hidden"
+                        whileInView="show"
+                        viewport={{ once: false, amount: 0.7 }}
+                        className="text-3xl font-bold text-center mb-12"
+                    >
+                        How We{' '}
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-red-500">
+                            Work
+                        </span>
+                    </motion.h2>
+
+                    <div className="grid md:grid-cols-3 gap-8">
+                        {steps.map((step, index) => (
+                            <motion.div
+                                key={index}
+                                variants={fadeIn('down', 0.1)}
+                                initial="hidden"
+                                whileInView="show"
+                                viewport={{ once: false, amount: 0.7 }}
+                                className="p-8 rounded-2xl shadow-lg text-center space-y-4 hover:-translate-y-1 hover:shadow-orange-500/20 transition border border-gray-300"
+                            >
+                                <div className="flex justify-center">{step.icon}</div>
+                                <h3 className="text-xl font-semibold">{step.title}</h3>
+                                <p>{step.description}</p>
+                            </motion.div>
+                        ))}
+                    </div>
+                </section>
                 <section className=" py-16 px-[7%]">
                     <div className="max-w-6xl mx-auto text-center">
                         <motion.h2
