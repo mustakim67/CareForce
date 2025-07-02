@@ -1,7 +1,7 @@
 import {
   createBrowserRouter,
 } from "react-router";
-import React, { Suspense } from 'react';
+import React, { Component, Suspense } from 'react';
 import Root from "../LayOuts/Root/Root";
 import Home from "../LayOuts/Home/Home";
 import Register from "../Components/Register";
@@ -13,6 +13,7 @@ import PrivateRoutes from "./PrivateRoutes";
 import AllVolunteer from "../LayOuts/AllVolunteer/AllVolunteer";
 import VolunteerNeedPostDetails from "../Components/VolunteerNeedPostDetails";
 import Loading from "../Components/Loading";
+import About from "../Components/About";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -47,6 +48,10 @@ const router = createBrowserRouter([
       {
         path: '/volunteer-need-post-details/:id',
         element: <PrivateRoutes><VolunteerNeedPostDetails /></PrivateRoutes>
+      },
+      {
+        path: '/about',
+        Component:About
       }
 
     ]
