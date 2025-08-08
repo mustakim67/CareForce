@@ -90,3 +90,26 @@ Organizations can share their needs, and volunteers can **request to join events
    ```bash
    git clone https://github.com/your-username/care-force.git
    cd care-force
+2. **Install dependencies**
+   ```bash
+   npm install
+
+3. **Set up environment variables**
+      - Create a .env.local file in the root
+      - Add Firebase config keys, Stripe public key, and API URL
+
+4. **Start the development server**
+   ```bash
+   npm run dev
+
+5. **Open in browser**
+   ```bash
+   http://localhost:5173
+
+---
+ ## 📚 Resources
+ - `Firebase Documentation`
+ - `Stripe Checkout Docs`
+ - `React Query`
+ - `Tailwind CSS`
+---
