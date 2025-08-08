@@ -88,7 +88,7 @@ Organizations can share their needs, and volunteers can **request to join events
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/your-username/care-force.git
+   git clone https://github.com/mustakim67/CareForce.git
    cd care-force
 2. **Install dependencies**
    ```bash
@@ -96,7 +96,7 @@ Organizations can share their needs, and volunteers can **request to join events
 
 3. **Set up environment variables**
       - Create a .env.local file in the root
-      - Add Firebase config keys, Stripe public key, and API URL
+      - Add Firebase config keys, and API URL
 
 4. **Start the development server**
    ```bash
@@ -109,7 +109,6 @@ Organizations can share their needs, and volunteers can **request to join events
 ---
  ## 📚 Resources
  - `Firebase Documentation`
- - `Stripe Checkout Docs`
  - `React Query`
  - `Tailwind CSS`
 ---
