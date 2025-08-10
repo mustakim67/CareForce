@@ -51,7 +51,7 @@ const VolunteerNeedPostDetails = () => {
                     console.log('Posted successfully.');
 
                     Swal.fire({
-                        title: "Post has been Added successfully!",
+                        title: "Request has been completed successfully!",
                         icon: "success",
                         draggable: true
                     });
@@ -262,9 +262,9 @@ const VolunteerNeedPostDetails = () => {
                                 <input
                                     type="text"
                                     name="UserName"
-                                    className="w-full input input-bordered  cursor-not-allowed"
-                                    value={user?.displayName || ""}
-                                    readOnly
+                                    className="w-full input input-bordered "
+                                    defaultValue={user?.displayName || ""}
+                                    required
                                 />
                             </div>
 
@@ -273,9 +273,9 @@ const VolunteerNeedPostDetails = () => {
                                 <input
                                     type="email"
                                     name="UserEmail"
-                                    className="w-full input input-bordered  cursor-not-allowed"
-                                    value={user?.email || ""}
-                                    readOnly
+                                    className="w-full input input-bordered "
+                                    defaultValue={user?.email || ""}
+                                    required
                                 />
                             </div>
                             <div className="md:col-span-2">

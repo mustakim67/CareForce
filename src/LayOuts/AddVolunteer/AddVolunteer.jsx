@@ -50,8 +50,8 @@ const AddVolunteer = () => {
             <Helmet>
                 <title>Add volunteer need post | CareForce</title>
             </Helmet>
-            <div className='min-h-[dvh]'>
-                 <div className='gap-2 mx-auto place-items-center mt-20'>
+            <div className='min-h-screen'>
+                 <div className='gap-2 mx-auto place-items-center mt-30'>
                 <h1 className='text-xl'>Create volunteer need posts in</h1>
                 <div className='flex'>
                     <img className='max-w-[50px]' src={logo} alt="" />
