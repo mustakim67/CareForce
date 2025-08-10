@@ -11,23 +11,23 @@ import useAxiosSecure from './Hooks/useAxiosSecure';
 
 const MyPost = () => {
     const [endDate, setEndDate] = useState();
-    const { user, } = useContext(AuthContext);   
+    const { user, } = useContext(AuthContext);
     const [Update, setUpdate] = useState(null);
-    
-    const [loading,setLoading]=useState(true);
+
+    const [loading, setLoading] = useState(true);
 
     const axiosSecure = useAxiosSecure();
     const [data, setData] = useState()
     useEffect(() => {
-          axiosSecure('/viewposts')
+        axiosSecure('/viewposts')
             .then(res => {
-              setLoading(false);
-              setData(res.data);
+                setLoading(false);
+                setData(res.data);
             })
             .catch(err => {
-              console.error('Unauthorized or other error:', err);
+                console.error('Unauthorized or other error:', err);
             })
-        }, [axiosSecure]);
+    }, [axiosSecure]);
     const result = data?.filter(post => post.OrganizationEmail === user.email) || "";
     useEffect(() => {
         if (Update?.deadline) {
@@ -36,19 +36,19 @@ const MyPost = () => {
         }
     }, [Update])
 
-const [requestedPosts, setRequestedPosts] = useState([]);
+    const [requestedPosts, setRequestedPosts] = useState([]);
 
-  useEffect(() => {
-  axiosSecure('/requested')
-    .then(res => {
-      const filtered = res.data.filter(requested => requested.UserEmail === user.email);
-      setLoading(false);
-      setRequestedPosts(filtered);
-    })
-    .catch(err => {
-      console.error('Unauthorized or other error:', err);
-    })
-}, [axiosSecure, user?.email]);
+    useEffect(() => {
+        axiosSecure('/requested')
+            .then(res => {
+                const filtered = res.data.filter(requested => requested.UserEmail === user.email);
+                setLoading(false);
+                setRequestedPosts(filtered);
+            })
+            .catch(err => {
+                console.error('Unauthorized or other error:', err);
+            })
+    }, [axiosSecure, user?.email]);
 
     const handleDelete = (_id) => {
 
@@ -140,7 +140,7 @@ const [requestedPosts, setRequestedPosts] = useState([]);
                     });
 
                     const updatedPost = { ...Update, ...updateData };
-                    const updatedData = data.map(post => post._id === Update._id ? updatedPost :post );
+                    const updatedData = data.map(post => post._id === Update._id ? updatedPost : post);
                     setData(updatedData);
                     form.reset();
                     setUpdate(null);
@@ -156,12 +156,12 @@ const [requestedPosts, setRequestedPosts] = useState([]);
             });
     };
     if (loading) {
-    return (
-     <div className='flex justify-center my-80 '>
-        <span className="loading loading-spinner loading-xl"></span>
-    </div>
-    );
-  }
+        return (
+            <div className='flex justify-center items-center min-h-screen'>
+                <span className="loading loading-bars loading-xl"></span>
+            </div>
+        );
+    }
     return (
         <div className="px-4 md:px-[7%] py-8">
             <h1 className="text-2xl font-bold text-center my-15 ">My Volunteer <span className='text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-red-500'>Need Posts</span></h1>
@@ -170,7 +170,7 @@ const [requestedPosts, setRequestedPosts] = useState([]);
                     <div>
                         <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 mx-auto">
                             {result.map((mypost) => (
-                                <div key={mypost._id} className="card bg-base-100 shadow-sm hover:-translate-y-1 hover:shadow-orange-500/20 transition">
+                                <div key={mypost._id} className="card shadow-sm hover:-translate-y-1 hover:shadow-orange-500/20 transition border border-gray-200">
                                     <figure>
                                         <img
                                             src={mypost.thumbnail}
@@ -180,7 +180,7 @@ const [requestedPosts, setRequestedPosts] = useState([]);
                                     </figure>
                                     <div className="card-body">
                                         <h2 className="card-title">{mypost.postTitle}</h2>
-                                        <p className="text-sm text-gray-600 mb-2">{mypost.category}</p>
+                                        <p className="text-sm mb-2">{mypost.category}</p>
                                         <div className="card-actions justify-end flex-wrap gap-2">
                                             <button
                                                 className="btn btn-sm flex gap-1 bg-gradient-to-r from-orange-500 to-red-500 text-white"
@@ -204,7 +204,7 @@ const [requestedPosts, setRequestedPosts] = useState([]);
                         </div>
                     </div>
                 ) : (
-                    <div className="text-center mt-10 text-gray-600 text-lg">
+                    <div className="text-center mt-10 text-lg">
                         <h1> No Posts found !!</h1>
                     </div>
                 )
@@ -225,7 +225,7 @@ const [requestedPosts, setRequestedPosts] = useState([]);
                                     </figure>
                                     <div className="card-body">
                                         <h2 className="card-title">{post.postTitle}</h2>
-                                        <p className="text-sm text-gray-600">{post.category}</p>
+                                        <p className="text-sm ">{post.category}</p>
                                         <h1>Deadline: {new Date(post.deadline).toLocaleDateString()}</h1>
                                         <h1>Location : {post.OrganizationName}</h1>
                                         <button onClick={() => handleCancel(post._id)} className='w-full btn bg-gradient-to-r from-orange-500 to-red-500 text-white'>Cancel </button>
@@ -236,7 +236,7 @@ const [requestedPosts, setRequestedPosts] = useState([]);
                     </>
 
                 ) : (
-                    <div className="text-center mt-10 text-gray-600 text-lg">
+                    <div className="text-center mt-10 text-lg">
                         <h1>No posts Found !</h1>
                     </div>
                 )}

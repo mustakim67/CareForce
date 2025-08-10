@@ -40,7 +40,7 @@ const Home = () => {
                 <VolunteersNeedNow></VolunteersNeedNow>
             </div>
             <div>
-                <div className='mx-auto pt-10'>
+                <div className='mx-auto pt-16'>
                     <motion.h1
                         variants={fadeIn('up', 0.1)}
                         initial='hidden'

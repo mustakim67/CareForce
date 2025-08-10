@@ -38,7 +38,7 @@ const Navbar = () => {
 after:w-full after:h-[2px] after:bg-gradient-to-r after:from-orange-500 after:to-red-500`;
 
     return (
-        <div className="navbar backdrop-blur-md bg-black/30 shadow-lg px-[4%] md:px-[7%] py-4 fixed top-0 z-50">
+        <div className="navbar backdrop-blur-md bg-black/50 shadow-lg px-[4%] md:px-[7%] py-4 fixed top-0 z-50 text-white">
             {/* Navbar Start */}
             <div className="navbar-start">
                 {/* Mobile Menu */}
@@ -110,7 +110,7 @@ after:w-full after:h-[2px] after:bg-gradient-to-r after:from-orange-500 after:to
                             <li>
                                 <details>
                                     <summary>My Profile</summary>
-                                    <ul className="p-2">
+                                    <ul className="p-2 backdrop-blur-md bg-black/30">
                                         <li>
                                             <NavLink to="/add-volunteer-need-post" className={({ isActive }) => isActive ? activeClass : ''}>
                                                 Add Post
