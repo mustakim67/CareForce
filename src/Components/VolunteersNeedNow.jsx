@@ -25,7 +25,7 @@ const VolunteersNeedNow = () => {
         );
     }
     return (
-        <div className='px-4 md:px-[7%] py-8 bg-[#FAF7F3]'>
+        <div className='px-4 md:px-[7%] py-8'>
             <div className='mt-14'>
                 <div className='text-center text-2xl md:text-3xl font-semibold  mb-5 md:mt-2 mt-1  '>
                     <h1>Volunteer <span className='text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-red-500'>Needs Now</span></h1>
