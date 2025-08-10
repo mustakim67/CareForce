@@ -3,6 +3,7 @@ import { Link, useLoaderData } from 'react-router';
 import { BsFillGrid3X3GapFill } from "react-icons/bs";
 import { FaTableList } from "react-icons/fa6";
 import axios from 'axios';
+import { FaLocationDot } from "react-icons/fa6";
 
 const AllPosts = () => {
     const AllPosts = useLoaderData();
@@ -63,7 +64,7 @@ const AllPosts = () => {
                                 <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
                                     {
                                         posts.map((post) => (
-                                            <div key={post._id} className="card bg-base-100 shadow-md border border-gray-300 hover:-translate-y-1 hover:shadow-orange-500/20 transition">
+                                            <div key={post._id} className="card bg-base-100 shadow-md border border-gray-300 hover:-translate-y-2 hover:shadow-orange-500/20 transition-all duration-500 ease-in-out">
                                                 <figure>
                                                     <img
                                                         src={post.thumbnail}
@@ -74,12 +75,7 @@ const AllPosts = () => {
                                                 <div className="card-body">
                                                     <h2 className="card-title">{post.postTitle}</h2>
                                                     <p className="text-sm">{post.category}</p>
-                                                    <h1>Deadline: {new Date(post.deadline).toLocaleDateString()}</h1>
-                                                    <div className='flex justify-between'>
-                                                        <h1>Location : {post.OrganizationName}</h1>
-                                                        <h1 className='font-semibold'>Vacancy: {post.numberOfVolunteers}</h1>
-                                                    </div>
-
+                                                        <h1 className='flex gap-2 items-center'><FaLocationDot /> {post.location}</h1>
                                                 <Link to={`/volunteer-need-post-details/${post._id}`}>
                                                     <button className='w-full btn bg-gradient-to-r from-orange-500 to-red-500 text-white'>
                                                         View Details

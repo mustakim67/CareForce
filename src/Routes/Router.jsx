@@ -36,7 +36,7 @@ const router = createBrowserRouter([
       {
         path: '/all-volunteers',
         loader: () => fetch("https://care-force-server.vercel.app/posts"),
-        element:<PrivateRoutes><AllVolunteer></AllVolunteer></PrivateRoutes>
+        element: <AllVolunteer></AllVolunteer>
       },
       {
         path: '/add-volunteer-need-post',
@@ -48,15 +48,15 @@ const router = createBrowserRouter([
       },
       {
         path: '/volunteer-need-post-details/:id',
-        element: <PrivateRoutes><VolunteerNeedPostDetails /></PrivateRoutes>
+        element: <VolunteerNeedPostDetails />
       },
       {
         path: '/about',
-        Component:About
+        Component: About
       },
       {
         path: '/contact',
-        Component:Contact
+        Component: Contact
       }
 
     ]

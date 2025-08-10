@@ -15,7 +15,7 @@ const VolunteerNeedPostDetails = () => {
     const axiosSecure= useAxiosSecure();
     const [loading,setLoading]=useState(true);
     useEffect(() => {
-      axiosSecure('/viewposts')
+      axios.get('https://care-force-server.vercel.app/viewposts')
         .then(res => {
         setLoading(false)
           setDetails(res.data);

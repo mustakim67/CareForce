@@ -34,10 +34,11 @@ const Navbar = () => {
             });
     };
 
-    const activeClass = 'text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-red-500';
+    const activeClass = `relative text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-red-500 after:content-[''] after:absolute after:left-0 after:-bottom-1 
+after:w-full after:h-[2px] after:bg-gradient-to-r after:from-orange-500 after:to-red-500`;
 
     return (
-        <div className="navbar backdrop-blur-md bg-black/60 text-white shadow-lg px-[4%] md:px-[7%] py-6 fixed top-0 z-50">
+        <div className="navbar backdrop-blur-md bg-black/30 text-white shadow-lg px-[4%] md:px-[7%] py-6 fixed top-0 z-50">
             {/* Navbar Start */}
             <div className="navbar-start">
                 {/* Mobile Menu */}
@@ -117,14 +118,13 @@ const Navbar = () => {
                                     </ul>
                                 </details>
                             </li>
-                            <li>
-                                <NavLink to="/all-volunteers" className={({ isActive }) => isActive ? activeClass : ''}>
-                                    All Volunteer Need Posts
-                                </NavLink>
-                            </li>
                         </>
                     )}
-
+                    <li>
+                        <NavLink to="/all-volunteers" className={({ isActive }) => isActive ? activeClass : ''}>
+                            All Volunteer Need Posts
+                        </NavLink>
+                    </li>
                     <NavLink to="/about" className={({ isActive }) => isActive ? activeClass : ''}>About Us</NavLink>
                     <NavLink to="/contact" className={({ isActive }) => isActive ? activeClass : ''}>Contact</NavLink>
                 </ul>
@@ -142,14 +142,14 @@ const Navbar = () => {
 
                 {user && (
                     <div className="dropdown dropdown-hover">
-                        <div tabIndex={0} role="button" className="w-12 rounded-full py-2 mr-4">
+                        <div tabIndex={0} role="button" className="w-12 rounded-full mr-4">
                             <img
                                 src={user?.photoURL}
                                 alt="User"
-                                className="rounded-full w-12 h-12 object-cover ring-1"
+                                className="rounded-full max-w-12 h-12 md:max-w-18 md:h-18 object-cover ring ring-orange-500 ring-offset-3"
                             />
                         </div>
-                        <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm -translate-x-20">
+                        <ul tabIndex={0} className="dropdown-content menu bg-base-100 text-black rounded-box z-1 w-52 p-2 shadow-sm -translate-x-20">
                             <li><span className='mx-auto'>{user?.displayName || "User Name"}</span></li>
                             <li><NavLink to="/dashboard" className='mx-auto'>Dashboard</NavLink></li>
                             <li>

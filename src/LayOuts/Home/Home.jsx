@@ -39,8 +39,8 @@ const Home = () => {
                 <Banner></Banner>
                 <VolunteersNeedNow></VolunteersNeedNow>
             </div>
-            <div>
-                <div className='mx-auto mt-10'>
+            <div className='bg-[#FAF7F3]'>
+                <div className='mx-auto pt-10'>
                     <motion.h1
                         variants={fadeIn('up', 0.1)}
                         initial='hidden'
@@ -64,7 +64,7 @@ const Home = () => {
                         initial='hidden'
                         whileInView={'show'}
                         viewport={{ once: false, amount: 0.7 }}
-                        className=' p-7 md:p-12 rounded-xl border-1 border-gray-300 text-center'>
+                        className=' p-7 md:p-12 rounded-xl border-1 border-gray-200 bg-white shadow-md text-center'>
                         <FaHandsHoldingChild size={40} className='mx-auto' />
                         <h1 className=' text-3xl font-bold  rounded-xl '><CountUp enableScrollSpy end={400} duration={3} />+</h1>
                         <p className=' pt-2'>Children Rescued</p>
@@ -74,7 +74,7 @@ const Home = () => {
                         initial='hidden'
                         whileInView={'show'}
                         viewport={{ once: false, amount: 0.7 }}
-                        className=' p-7 md:p-12 rounded-xl border-1 border-gray-300 text-center'>
+                        className=' p-7 md:p-12 rounded-xl border-1 border-gray-200 bg-white shadow-md text-center'>
                         <FaRegMoneyBill1 size={40} className='mx-auto' />
                         <h1 className=' text-3xl font-bold  rounded-xl'><CountUp enableScrollSpy end={78000} duration={3} />+</h1>
                         <p className=' pt-2'>Total Donations</p>
@@ -84,7 +84,7 @@ const Home = () => {
                         initial='hidden'
                         whileInView={'show'}
                         viewport={{ once: false, amount: 0.7 }}
-                        className=' p-7 md:p-12 rounded-xl border-1 border-gray-300 text-center'>
+                        className=' p-7 md:p-12 rounded-xl border-1 border-gray-200 bg-white shadow-md text-center'>
                         <FaHandHoldingHeart size={40} className='mx-auto' />
                         <h1 className=' text-3xl font-bold  rounded-xl'><CountUp enableScrollSpy end={700} duration={3} />+</h1>
                         <p className=' pt-2'>Event Compelted</p>
@@ -94,7 +94,7 @@ const Home = () => {
                         initial='hidden'
                         whileInView={'show'}
                         viewport={{ once: false, amount: 0.7 }}
-                        className='0 p-7 md:p-12 rounded-xl border-1 border-gray-300 text-center'>
+                        className='0 p-7 md:p-12 rounded-xl border-1 border-gray-200 bg-white shadow-md text-center'>
                         <TiWorld size={40} className='mx-auto' />
                         <h1 className=' text-3xl font-bold  rounded-xl'><CountUp enableScrollSpy end={3000} duration={3} />+</h1>
                         <p className=' pt-2'>Total Volunteers</p>
@@ -122,7 +122,7 @@ const Home = () => {
                                 initial="hidden"
                                 whileInView="show"
                                 viewport={{ once: false, amount: 0.7 }}
-                                className="p-8 rounded-2xl shadow-lg text-center space-y-4 hover:-translate-y-1 hover:shadow-orange-500/20 transition border border-gray-300"
+                                className="p-8 bg-white rounded-2xl shadow-lg text-center space-y-4 hover:-translate-y-1.5 hover:shadow-orange-500/20 transition border border-gray-200"
                             >
                                 <div className="flex justify-center">{step.icon}</div>
                                 <h3 className="text-xl font-semibold">{step.title}</h3>
