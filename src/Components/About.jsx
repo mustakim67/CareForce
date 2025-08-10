@@ -12,7 +12,7 @@ const About = () => {
                 transition={{ duration: 0.5 }}
                 className="space-y-6"
             >
-                <h1 className="text-3xl font-semibold text-white py-2 mb-15 text-center bg-gradient-to-r from-orange-500 to-red-500">
+                <h1 className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-red-500 text-center">
                     About Us
                 </h1>
                 <p className="text-lg leading-relaxed">
@@ -30,7 +30,7 @@ const About = () => {
                 transition={{ duration: 0.5, delay: 0.2 }}
                 className="space-y-6"
             >
-                <h2 className="text-3xl font-semibold text-orange-400">The Way We Work</h2>
+                <h2 className="text-3xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-red-500">The Way We Work</h2>
                 <div className="space-y-4 ">
                     <p><strong>Discover Opportunities:</strong> Volunteers can explore a wide range of social projects, each aimed at solving real-world problems and strengthening our communities.</p>
                     <p><strong >Offer Help Easily:</strong> Once you find a project that speaks to you, simply send a request to join. We’ve kept the process simple, because helping others should never be complicated.</p>
@@ -47,7 +47,7 @@ const About = () => {
                 transition={{ duration: 0.5, delay: 0.4 }}
                 className="space-y-6"
             >
-                <h2 className="text-3xl font-semibold text-orange-400">Project Overview</h2>
+                <h2 className="text-3xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-red-500">Project Overview</h2>
                 <p className=" text-lg leading-relaxed">
                     Care Force was born out of a simple idea: making it easier for people to support one another. We've seen how powerful volunteerism can be — not just for those receiving help, but for those giving it as well. That's why we created a space where opportunities to give back are easy to find, easy to manage, and always meaningful.
                 </p>
