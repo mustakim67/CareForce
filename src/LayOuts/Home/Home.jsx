@@ -132,7 +132,7 @@ const Home = () => {
                     </div>
                 </section>
                 <section className=" py-16 px-[7%]">
-                    <div className="max-w-6xl mx-auto text-center">
+                    <div className="mx-auto text-center">
                         <motion.h2
                             variants={fadeIn('up', 0.1)}
                             initial='hidden'
@@ -179,6 +179,21 @@ const Home = () => {
                                 className="bg-green-100 p-6 rounded-2xl shadow-md max-w-sm">
                                 <h3 className="text-xl font-semibold text-green-700 mb-2">Connect With Others</h3>
                                 <p className='text-gray-500'>Meet like-minded people who share your passion for service and community growth.</p>
+                            </motion.div>
+                            <motion.div
+                                variants={fadeIn('up', 0.1)}
+                                initial="hidden"
+                                whileInView="show"
+                                viewport={{ once: false, amount: 0.7 }}
+                                className="bg-purple-100 p-6 rounded-2xl shadow-md max-w-sm"
+                            >
+                                <h3 className="text-xl font-semibold text-purple-700 mb-2">
+                                    Inspire Change
+                                </h3>
+                                <p className="text-gray-500">
+                                    Be a role model and inspire others to take action for a
+                                    brighter, kinder world.
+                                </p>
                             </motion.div>
                         </div>
                     </div>
