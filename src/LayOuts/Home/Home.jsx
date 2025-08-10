@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Banner from '../../Components/Banner';
 import VolunteersNeedNow from '../../Components/VolunteersNeedNow';
 import { Helmet } from 'react-helmet';
@@ -10,8 +10,31 @@ import { TiWorld } from "react-icons/ti";
 import { motion } from 'framer-motion';
 import { fadeIn } from '../../Components/variant'
 import { FaSearch, FaHandsHelping, FaClipboardList } from 'react-icons/fa';
+import axios from 'axios';
 
 const Home = () => {
+    const [completedPosts, setCompletedPosts] = useState([]);
+    useEffect(() => {
+        const fetchCompletedPosts = async () => {
+            try {
+                const today = new Date();
+                const res = await axios.get('https://care-force-server.vercel.app/posts');
+                const postsArray = res.data.posts || [];
+
+                const completed = postsArray
+                    .filter(post => new Date(post.deadline) < today)
+                    .sort((a, b) => new Date(b.deadline) - new Date(a.deadline))
+                    .slice(0, 4);
+
+                setCompletedPosts(completed);
+            } catch (error) {
+                console.error('Error fetching completed posts:', error);
+            }
+        };
+
+        fetchCompletedPosts();
+    }, []);
+
     const steps = [
         {
             icon: <FaSearch className="text-3xl text-orange-500" />,
@@ -39,6 +62,40 @@ const Home = () => {
                 <Banner></Banner>
                 <VolunteersNeedNow></VolunteersNeedNow>
             </div>
+            <section className="px-[7%] py-16">
+                <h2 className="text-3xl font-bold text-center mb-10">
+                    Completed <span className='text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-red-500'>Events</span>
+                </h2>
+                <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 md:grid-cols-4">
+                    {completedPosts.length === 0 ? (
+                        <p className="text-center text-gray-600 col-span-full">No completed events found.</p>
+                    ) : (
+                        completedPosts.map(post => (
+                            <div
+                                key={post._id}
+                                className="card shadow-md rounded-lg overflow-hidden border border-gray-200 hover:shadow-orange-500/30 transition"
+                            >
+                                <img
+                                    src={post.thumbnail}
+                                    alt={post.postTitle}
+                                    className="w-full h-48 object-cover"
+                                />
+                                <div className="p-4">
+                                    <h3 className="text-lg font-semibold mb-1">{post.postTitle}</h3>
+                                    <p className="text-sm mb-2">{post.category}</p>
+                                    <p className="text-sm mb-2">
+                                        Deadline: {new Date(post.deadline).toLocaleDateString()}
+                                    </p>
+                                    <p className="text-sm line-clamp-3">
+                                        {post.description || 'No description available.'}
+                                    </p>
+                                </div>
+                            </div>
+                        ))
+                    )}
+                </div>
+            </section>
+
             <div>
                 <div className='mx-auto pt-16'>
                     <motion.h1
