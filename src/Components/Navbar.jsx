@@ -48,9 +48,9 @@ after:w-full after:h-[2px] after:bg-gradient-to-r after:from-orange-500 after:to
                     </div>
                     <ul
                         tabIndex={0}
-                        className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
+                        className="menu menu-sm dropdown-content rounded-box z-1 mt-3 w-52 p-2 shadow backdrop-blur-md bg-black/50"
                     >
-                        <li className='text-white'>
+                        <li>
                             <NavLink to="/" className={({ isActive }) => isActive ? activeClass : ''}>Home</NavLink>
                         </li>
 
@@ -74,13 +74,14 @@ after:w-full after:h-[2px] after:bg-gradient-to-r after:from-orange-500 after:to
                                         </ul>
                                     </details>
                                 </li>
-                                <li>
-                                    <NavLink to="/all-volunteers" className={({ isActive }) => isActive ? activeClass : ''}>
-                                        All Volunteer Need Posts
-                                    </NavLink>
-                                </li>
+
                             </>
                         )}
+                        <li>
+                            <NavLink to="/all-volunteers" className={({ isActive }) => isActive ? activeClass : ''}>
+                                All Volunteer Need Posts
+                            </NavLink>
+                        </li>
 
                         <li className='text-white'>
                             <NavLink to="/about" className={({ isActive }) => isActive ? activeClass : ''}>About Us</NavLink>

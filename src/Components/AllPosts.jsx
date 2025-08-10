@@ -33,7 +33,8 @@ const AllPosts = () => {
 
     return (
         <div className='min-h-screen'>
-            <h1 className="text-lg md:text-2xl font-bold text-center mb-4 md:mb-10 md:mt-35">
+            <h1 className="text-lg md:text-2xl font-bold text-center mb-4 md:mb-10
+            pt-10 md:mt-35">
                 All Volunteer <span className='text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-red-500'>Need Posts</span>
             </h1>
 
