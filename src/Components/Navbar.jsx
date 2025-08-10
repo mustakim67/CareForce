@@ -38,7 +38,7 @@ const Navbar = () => {
 after:w-full after:h-[2px] after:bg-gradient-to-r after:from-orange-500 after:to-red-500`;
 
     return (
-        <div className="navbar backdrop-blur-md bg-black/30 text-white shadow-lg px-[4%] md:px-[7%] py-6 fixed top-0 z-50">
+        <div className="navbar backdrop-blur-md bg-black/30 text-white shadow-lg px-[4%] md:px-[7%] py-4 fixed top-0 z-50">
             {/* Navbar Start */}
             <div className="navbar-start">
                 {/* Mobile Menu */}
